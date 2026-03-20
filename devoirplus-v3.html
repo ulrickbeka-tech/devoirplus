@@ -1,0 +1,1582 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Devoir+ — Apprends. Affronte. Réussis.</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  /* Warm light palette */
+  --bg:#faf8f4;
+  --bg2:#f3f0ea;
+  --bg3:#ebe7df;
+  --s1:#ffffff;
+  --s2:#f7f4ef;
+  --s3:#ede9e1;
+
+  /* Vivid accents */
+  --grn:#16a34a;   /* forest green — primary */
+  --grn-l:#dcfce7;
+  --grn-m:#86efac;
+  --ylw:#f59e0b;   /* amber — energy */
+  --ylw-l:#fef3c7;
+  --blu:#2563eb;   /* cobalt — duel */
+  --blu-l:#dbeafe;
+  --red:#dc2626;   /* error / wrong */
+  --red-l:#fee2e2;
+  --pur:#7c3aed;   /* planning */
+  --pur-l:#ede9fe;
+  --org:#ea580c;   /* streak */
+  --org-l:#ffedd5;
+
+  /* Text */
+  --txt:#1c1917;
+  --txt2:#44403c;
+  --muted:#78716c;
+  --subtle:#a8a29e;
+
+  /* Borders */
+  --border:#e7e3da;
+  --border2:#d6d0c6;
+
+  /* Radius */
+  --r:16px;
+  --r2:24px;
+  --r3:32px;
+
+  /* Fonts */
+  --fh:'Fraunces',serif;
+  --fb:'Plus Jakarta Sans',sans-serif;
+
+  /* Shadows */
+  --sh:0 1px 3px rgba(0,0,0,.06),0 4px 16px rgba(0,0,0,.04);
+  --sh2:0 4px 24px rgba(0,0,0,.08),0 1px 4px rgba(0,0,0,.04);
+  --sh3:0 12px 48px rgba(0,0,0,.12),0 4px 16px rgba(0,0,0,.06);
+}
+
+body{background:var(--bg);color:var(--txt);font-family:var(--fb);overflow-x:hidden;min-height:100vh;font-size:15px;line-height:1.6}
+input,select,textarea,button{font-family:var(--fb)}
+.hidden{display:none!important}
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:var(--bg2)}
+::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px}
+
+/* ══ NAV ══ */
+nav{
+  position:sticky;top:0;z-index:500;
+  background:rgba(250,248,244,.92);
+  backdrop-filter:blur(20px);
+  border-bottom:1.5px solid var(--border);
+  padding:0 48px;height:62px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.logo{
+  font-family:var(--fh);font-size:1.45rem;font-weight:800;
+  cursor:pointer;letter-spacing:-.3px;color:var(--txt);
+  display:flex;align-items:center;gap:6px;
+}
+.logo-dot{
+  width:10px;height:10px;border-radius:50%;
+  background:var(--grn);display:inline-block;
+  animation:pulse-dot 2s ease-in-out infinite;
+}
+@keyframes pulse-dot{0%,100%{transform:scale(1)}50%{transform:scale(1.3)}}
+
+.nav-links{display:flex;gap:2px;list-style:none}
+.nav-links a{
+  color:var(--muted);text-decoration:none;font-size:.84rem;
+  font-weight:600;cursor:pointer;
+  padding:7px 14px;border-radius:50px;
+  transition:all .18s;
+}
+.nav-links a:hover{color:var(--txt);background:var(--bg2)}
+.nav-links a.active{color:var(--grn);background:var(--grn-l)}
+
+.nav-r{display:flex;gap:10px;align-items:center}
+.mob-btn{display:none;background:none;border:none;font-size:1.3rem;cursor:pointer;color:var(--txt2)}
+
+/* ══ BUTTONS ══ */
+.btn{
+  font-family:var(--fb);font-weight:700;border:none;cursor:pointer;
+  border-radius:50px;transition:all .18s;
+  display:inline-flex;align-items:center;gap:7px;
+  white-space:nowrap;font-size:.88rem;
+}
+.btn-sm{padding:8px 18px;font-size:.8rem}
+.btn-md{padding:11px 24px}
+.btn-lg{padding:14px 30px;font-size:.97rem}
+.btn-xl{padding:17px 36px;font-size:1.05rem}
+.btn-grn{background:var(--grn);color:#fff;box-shadow:0 4px 14px rgba(22,163,74,.25)}
+.btn-grn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(22,163,74,.35)}
+.btn-ylw{background:var(--ylw);color:#fff;box-shadow:0 4px 14px rgba(245,158,11,.25)}
+.btn-ylw:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(245,158,11,.35)}
+.btn-blu{background:var(--blu);color:#fff;box-shadow:0 4px 14px rgba(37,99,235,.2)}
+.btn-blu:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(37,99,235,.3)}
+.btn-pur{background:var(--pur);color:#fff;box-shadow:0 4px 14px rgba(124,58,237,.2)}
+.btn-pur:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(124,58,237,.3)}
+.btn-ghost{background:transparent;border:1.5px solid var(--border2);color:var(--txt2)}
+.btn-ghost:hover{border-color:var(--grn);color:var(--grn);background:var(--grn-l)}
+.btn-white{background:#fff;color:var(--txt);box-shadow:var(--sh)}
+.btn-white:hover{transform:translateY(-1px);box-shadow:var(--sh2)}
+.btn:disabled{opacity:.5;cursor:not-allowed;transform:none!important;box-shadow:none!important}
+
+/* ══ CARDS ══ */
+.card{background:var(--s1);border:1.5px solid var(--border);border-radius:var(--r);padding:22px;box-shadow:var(--sh)}
+.card-lg{padding:28px}
+.card-hover{transition:all .2s}
+.card-hover:hover{transform:translateY(-4px);box-shadow:var(--sh3);border-color:var(--border2)}
+
+/* ══ BADGES ══ */
+.badge{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:50px;font-size:.72rem;font-weight:700;letter-spacing:.3px}
+.b-grn{background:var(--grn-l);color:var(--grn)}
+.b-ylw{background:var(--ylw-l);color:var(--ylw)}
+.b-blu{background:var(--blu-l);color:var(--blu)}
+.b-red{background:var(--red-l);color:var(--red)}
+.b-pur{background:var(--pur-l);color:var(--pur)}
+.b-org{background:var(--org-l);color:var(--org)}
+
+/* ══ PAGES ══ */
+.page{display:none;min-height:calc(100vh - 62px)}
+.page.active{display:block;animation:pageIn .3s ease both}
+@keyframes pageIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.wrap{max-width:1160px;margin:0 auto;padding:0 48px}
+
+/* ════════════════════════════════════
+   HOME
+════════════════════════════════════ */
+.hero{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:56px;align-items:center;
+  padding:72px 0 64px;position:relative;
+}
+
+/* Decorative blobs */
+.blob{position:absolute;pointer-events:none;border-radius:50%;filter:blur(60px);opacity:.35}
+.blob1{top:-40px;left:-80px;width:480px;height:480px;background:radial-gradient(circle,#bbf7d0,transparent)}
+.blob2{bottom:-60px;right:-60px;width:360px;height:360px;background:radial-gradient(circle,#fef3c7,transparent)}
+
+.hero-tag{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--grn-l);color:var(--grn);
+  border:1.5px solid var(--grn-m);
+  padding:6px 14px;border-radius:50px;
+  font-size:.75rem;font-weight:700;letter-spacing:.5px;
+  text-transform:uppercase;margin-bottom:22px;
+  animation:fu .5s ease both;
+}
+.hero-tag-dot{width:6px;height:6px;border-radius:50%;background:var(--grn);animation:pulse-dot 1.5s ease-in-out infinite}
+
+.hero-h1{
+  font-family:var(--fh);
+  font-size:clamp(2.8rem,4.5vw,4.2rem);
+  font-weight:800;line-height:1.05;
+  letter-spacing:-2px;
+  margin-bottom:18px;
+  animation:fu .6s ease both;
+  color:var(--txt);
+}
+.hero-h1 .hl-grn{color:var(--grn);font-style:italic}
+.hero-h1 .hl-ylw{color:var(--ylw)}
+
+.hero-p{
+  color:var(--txt2);font-size:1.02rem;line-height:1.78;
+  max-width:460px;margin-bottom:32px;
+  animation:fu .7s ease both;
+}
+.hero-p strong{color:var(--txt);font-weight:700}
+
+.hero-acts{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:44px;animation:fu .8s ease both}
+
+.hero-trust{
+  display:flex;align-items:center;gap:16px;
+  animation:fu .9s ease both;
+  padding-top:32px;border-top:1.5px solid var(--border);
+}
+.trust-avatars{display:flex}
+.ta{
+  width:32px;height:32px;border-radius:50%;
+  border:2.5px solid var(--bg);
+  display:flex;align-items:center;justify-content:center;
+  font-size:.8rem;margin-left:-8px;
+  font-weight:700;color:#fff;
+}
+.ta:first-child{margin-left:0}
+.ta1{background:linear-gradient(135deg,#22c55e,#16a34a)}
+.ta2{background:linear-gradient(135deg,#3b82f6,#2563eb)}
+.ta3{background:linear-gradient(135deg,#f59e0b,#d97706)}
+.ta4{background:linear-gradient(135deg,#a855f7,#7c3aed)}
+.trust-text{font-size:.83rem;color:var(--muted)}
+.trust-text strong{color:var(--txt);font-weight:700}
+
+/* Hero right */
+.hero-right{display:flex;flex-direction:column;gap:14px;animation:fu .7s ease .1s both}
+
+.demo-card{
+  background:var(--s1);border:1.5px solid var(--border);
+  border-radius:var(--r2);padding:22px;
+  box-shadow:var(--sh3);
+  position:relative;
+}
+.demo-float{
+  position:absolute;top:-14px;right:-14px;
+  background:var(--s1);border:1.5px solid var(--border);
+  border-radius:14px;padding:10px 14px;
+  display:flex;align-items:center;gap:9px;
+  box-shadow:var(--sh2);
+  animation:fl 3s ease-in-out infinite;z-index:2;
+}
+@keyframes fl{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-8px) rotate(1deg)}}
+.df-ico{font-size:1.4rem}
+.df-n{font-family:var(--fh);font-size:1.05rem;font-weight:800;color:var(--ylw)}
+.df-l{font-size:.7rem;color:var(--muted);margin-top:1px}
+
+.q-card-demo{}
+.qd-meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.qd-prog-wrap{height:6px;background:var(--bg2);border-radius:50px;overflow:hidden;margin-bottom:12px}
+.qd-prog{height:100%;width:60%;background:linear-gradient(90deg,var(--grn-m),var(--grn));border-radius:50px;animation:grow .9s ease .3s both}
+@keyframes grow{from{width:0}to{width:60%}}
+.qd-q{font-family:var(--fh);font-size:1.1rem;font-weight:600;margin-bottom:14px;line-height:1.35;color:var(--txt)}
+.qd-opts{display:flex;flex-direction:column;gap:8px}
+.qd-opt{
+  display:flex;align-items:center;gap:10px;
+  padding:10px 14px;background:var(--bg);
+  border:1.5px solid var(--border);border-radius:12px;
+  font-size:.88rem;cursor:pointer;transition:all .18s;
+  color:var(--txt2);
+}
+.qd-opt.ok{border-color:var(--grn);background:var(--grn-l);color:var(--grn)}
+.qd-opt.ko{border-color:var(--red);background:var(--red-l);color:var(--red)}
+.qd-ltr{
+  width:24px;height:24px;border-radius:7px;
+  background:var(--bg2);border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  font-size:.72rem;font-weight:800;flex-shrink:0;
+  font-family:var(--fh);
+}
+.qd-opt.ok .qd-ltr{background:var(--grn);border-color:var(--grn);color:#fff}
+.qd-opt.ko .qd-ltr{background:var(--red);border-color:var(--red);color:#fff}
+
+/* mini pills under demo */
+.mini-pill{
+  background:var(--s1);border:1.5px solid var(--border);
+  border-radius:14px;padding:13px 16px;
+  display:flex;align-items:center;gap:12px;
+  cursor:pointer;transition:all .2s;box-shadow:var(--sh);
+}
+.mini-pill:hover{border-color:var(--border2);transform:translateY(-2px);box-shadow:var(--sh2)}
+.mp-ico{font-size:1.6rem}
+.mp-t{font-weight:700;font-size:.88rem;color:var(--txt)}
+.mp-s{font-size:.75rem;color:var(--muted);margin-top:1px}
+.mp-arr{margin-left:auto;font-size:.9rem;color:var(--subtle)}
+
+/* ══ SECTIONS ══ */
+.sec{padding:64px 0}
+.sec-chip{
+  display:inline-flex;align-items:center;gap:6px;
+  background:var(--bg2);color:var(--muted);
+  border:1.5px solid var(--border);
+  padding:4px 12px;border-radius:50px;
+  font-size:.72rem;font-weight:700;letter-spacing:.5px;
+  text-transform:uppercase;margin-bottom:14px;
+}
+.sec-h{
+  font-family:var(--fh);
+  font-size:clamp(1.9rem,3vw,2.6rem);
+  font-weight:800;letter-spacing:-1.2px;
+  margin-bottom:12px;color:var(--txt);
+  line-height:1.1;
+}
+.sec-p{color:var(--txt2);font-size:.97rem;line-height:1.75;max-width:500px;margin-bottom:48px}
+
+/* Features */
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.fc{
+  background:var(--s1);border:1.5px solid var(--border);
+  border-radius:var(--r);padding:26px;
+  transition:all .22s;cursor:default;
+  position:relative;overflow:hidden;
+}
+.fc::after{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:var(--fc-c,var(--grn));
+  transform:scaleX(0);transform-origin:left;
+  transition:transform .3s ease;
+}
+.fc:hover{transform:translateY(-4px);box-shadow:var(--sh3);border-color:var(--border2)}
+.fc:hover::after{transform:scaleX(1)}
+.fc-ico{
+  width:44px;height:44px;border-radius:12px;
+  background:var(--fc-bg,var(--grn-l));
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.4rem;margin-bottom:14px;
+}
+.fc-t{font-family:var(--fh);font-size:1rem;font-weight:700;margin-bottom:6px;color:var(--txt)}
+.fc-d{color:var(--muted);font-size:.85rem;line-height:1.65}
+.fc-new{
+  display:inline-block;background:var(--red);color:#fff;
+  font-size:.6rem;font-weight:800;padding:2px 6px;
+  border-radius:4px;margin-left:6px;letter-spacing:.4px;
+  vertical-align:middle;
+}
+
+/* Subjects */
+.subj-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:32px}
+.sj{
+  background:var(--s1);border:1.5px solid var(--border);
+  border-radius:14px;padding:16px 18px;
+  display:flex;align-items:center;gap:12px;
+  cursor:pointer;transition:all .18s;box-shadow:var(--sh);
+}
+.sj:hover{border-color:var(--grn);transform:scale(1.02);box-shadow:var(--sh2)}
+.sj-ico{font-size:1.4rem}
+.sj-n{font-weight:700;font-size:.87rem;color:var(--txt)}
+.sj-c{font-size:.7rem;color:var(--muted);margin-top:1px}
+
+/* Duel highlight */
+.duel-hl{
+  background:linear-gradient(135deg,#eff6ff,#eef2ff);
+  border:1.5px solid #bfdbfe;border-radius:var(--r2);
+  padding:52px;display:grid;grid-template-columns:1fr 1fr;
+  gap:48px;align-items:center;
+}
+.duel-demo-card{
+  background:#fff;border:1.5px solid #bfdbfe;
+  border-radius:var(--r);padding:20px;
+  box-shadow:0 8px 32px rgba(37,99,235,.1);
+}
+.ddc-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.ddc-sc{display:grid;grid-template-columns:1fr auto 1fr;gap:8px;align-items:center;margin-bottom:14px}
+.ddc-pl{background:var(--bg);border:1.5px solid #bfdbfe;border-radius:10px;padding:10px;text-align:center}
+.ddc-pn{font-size:.72rem;color:var(--muted);margin-bottom:4px}
+.ddc-pts{font-family:var(--fh);font-size:1.9rem;font-weight:800}
+.c-grn{color:var(--grn)}.c-blu{color:var(--blu)}
+.ddc-vs{text-align:center;font-family:var(--fh);font-size:.88rem;color:var(--muted)}
+.ddc-q{font-family:var(--fh);font-size:.97rem;font-weight:600;margin-bottom:10px;text-align:center;color:var(--txt)}
+.ddc-opts{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.ddc-o{
+  background:var(--bg);border:1.5px solid var(--border);
+  border-radius:8px;padding:8px 10px;
+  font-size:.8rem;text-align:center;cursor:pointer;transition:all .18s;
+  color:var(--txt2);
+}
+.ddc-o.sel{border-color:var(--grn);background:var(--grn-l);color:var(--grn)}
+.coach-bub-light{
+  margin-top:12px;
+  background:var(--pur-l);border:1.5px solid #c4b5fd;
+  border-radius:10px;padding:11px 13px;
+  font-size:.78rem;color:var(--txt2);line-height:1.55;
+}
+.coach-bub-light strong{color:var(--pur)}
+
+/* prof section */
+.prof-2col{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.pf-demo{
+  background:var(--s1);border:1.5px solid var(--border);
+  border-radius:var(--r);padding:22px;box-shadow:var(--sh2);
+}
+.pf-bar{display:flex;gap:6px;margin-bottom:18px}
+.pfd{width:9px;height:9px;border-radius:50%}
+.pf-inp{
+  background:var(--bg);border:1.5px solid var(--border);
+  border-radius:9px;padding:9px 13px;font-size:.85rem;
+  color:var(--txt2);width:100%;margin-bottom:11px;
+}
+.pf-inp.t{height:60px;display:block}
+.pf-row{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.pf-ai-btn{
+  display:flex;align-items:center;gap:8px;
+  background:var(--ylw-l);border:1.5px dashed #fcd34d;
+  border-radius:9px;padding:10px 13px;
+  font-size:.82rem;color:var(--ylw);font-weight:700;
+  cursor:pointer;margin-bottom:11px;transition:all .2s;
+}
+.pf-ai-btn:hover{background:#fef9c3;border-color:var(--ylw)}
+.pf-pub{
+  width:100%;padding:12px;background:var(--grn);color:#fff;
+  font-weight:800;font-size:.9rem;border:none;
+  border-radius:9px;cursor:pointer;font-family:var(--fb);
+  box-shadow:0 4px 14px rgba(22,163,74,.25);transition:all .2s;
+}
+.pf-pub:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(22,163,74,.35)}
+.pf-lbl{font-size:.7rem;font-weight:700;letter-spacing:.4px;text-transform:uppercase;color:var(--muted);margin-bottom:5px}
+
+/* CTA strip */
+.cta-strip{
+  background:linear-gradient(135deg,var(--grn),#15803d);
+  border-radius:var(--r2);padding:56px;text-align:center;
+  margin-bottom:64px;position:relative;overflow:hidden;
+}
+.cta-strip::before{
+  content:'';position:absolute;inset:0;
+  background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.cta-h{font-family:var(--fh);font-size:clamp(2rem,3.5vw,3rem);font-weight:800;letter-spacing:-1.5px;margin-bottom:12px;color:#fff;position:relative}
+.cta-p{color:rgba(255,255,255,.8);max-width:440px;margin:0 auto 28px;line-height:1.7;font-size:.97rem;position:relative}
+.cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;position:relative}
+
+/* footer */
+footer{border-top:1.5px solid var(--border);padding:28px 48px;display:flex;align-items:center;justify-content:space-between}
+.ft-logo{font-family:var(--fh);font-weight:800;font-size:1.1rem;color:var(--txt)}
+.ft-links{display:flex;gap:20px}
+.ft-links a{color:var(--muted);font-size:.8rem;text-decoration:none;cursor:pointer;transition:color .2s}
+.ft-links a:hover{color:var(--grn)}
+
+/* ════════════════════════════════════
+   EXERCISES
+════════════════════════════════════ */
+.ex-layout{display:grid;grid-template-columns:252px 1fr;gap:24px;padding:36px 0}
+.sb{display:flex;flex-direction:column;gap:13px}
+.sb-card{background:var(--s1);border:1.5px solid var(--border);border-radius:var(--r);padding:18px;box-shadow:var(--sh)}
+.sb-t{font-family:var(--fh);font-size:.9rem;font-weight:700;margin-bottom:13px;color:var(--txt)}
+.fg{margin-bottom:15px}
+.fl{font-size:.69rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--muted);margin-bottom:7px}
+.chips{display:flex;flex-wrap:wrap;gap:5px}
+.chip{
+  padding:5px 11px;border-radius:50px;
+  border:1.5px solid var(--border);background:var(--bg);
+  font-size:.76rem;color:var(--muted);cursor:pointer;
+  transition:all .18s;font-weight:600;
+}
+.chip:hover,.chip.on{border-color:var(--grn);color:var(--grn);background:var(--grn-l)}
+.ex-tb{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
+.ex-search{
+  background:var(--s1);border:1.5px solid var(--border);
+  border-radius:50px;padding:9px 18px;font-size:.86rem;
+  color:var(--txt);width:280px;box-shadow:var(--sh);transition:border-color .2s;
+}
+.ex-search::placeholder{color:var(--subtle)}
+.ex-search:focus{outline:none;border-color:var(--grn)}
+.ex-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:15px}
+.ex-card{
+  background:var(--s1);border:1.5px solid var(--border);
+  border-radius:var(--r);padding:20px;cursor:pointer;
+  transition:all .2s;display:flex;flex-direction:column;gap:9px;
+  box-shadow:var(--sh);
+}
+.ex-card:hover{border-color:var(--grn);transform:translateY(-3px);box-shadow:var(--sh2)}
+.ex-title{font-family:var(--fh);font-size:.96rem;font-weight:700;line-height:1.3;margin:5px 0;color:var(--txt)}
+.ex-ft{
+  display:flex;justify-content:space-between;align-items:center;
+  margin-top:3px;padding-top:11px;
+  border-top:1.5px solid var(--border);
+  font-size:.73rem;color:var(--muted);
+}
+
+/* ════════════════════════════════════
+   PLAYER
+════════════════════════════════════ */
+.player-wrap{max-width:680px;margin:0 auto;padding:40px 48px}
+.pl-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:26px}
+.pl-back{display:flex;align-items:center;gap:7px;color:var(--muted);font-size:.86rem;cursor:pointer;transition:color .2s;font-weight:600}
+.pl-back:hover{color:var(--grn)}
+.pl-pbar{height:8px;background:var(--bg2);border-radius:50px;overflow:hidden;margin:12px 0 8px;border:1px solid var(--border)}
+.pl-fill{height:100%;background:linear-gradient(90deg,var(--grn-m),var(--grn));border-radius:50px;transition:width .5s ease}
+.pq-row{display:flex;justify-content:space-between;font-size:.78rem;color:var(--muted);margin-bottom:24px;font-weight:600}
+.qcard{
+  background:var(--s1);border:1.5px solid var(--border);
+  border-radius:var(--r2);padding:32px;box-shadow:var(--sh2);
+}
+.q-txt{font-family:var(--fh);font-size:1.3rem;font-weight:700;line-height:1.35;margin-bottom:26px;color:var(--txt)}
+.q-opts{display:flex;flex-direction:column;gap:10px;margin-bottom:22px}
+.qo{
+  display:flex;align-items:center;gap:12px;
+  padding:14px 18px;background:var(--bg);
+  border:1.5px solid var(--border);border-radius:13px;
+  cursor:pointer;transition:all .2s;font-size:.92rem;font-weight:500;
+  color:var(--txt2);
+}
+.qo:hover:not(.ans){border-color:var(--grn);background:var(--grn-l);color:var(--grn)}
+.qo.correct{border-color:var(--grn);background:var(--grn-l);color:var(--grn)}
+.qo.wrong{border-color:var(--red);background:var(--red-l);color:var(--red)}
+.ql{
+  width:28px;height:28px;border-radius:8px;
+  background:var(--bg2);border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  font-size:.75rem;font-weight:800;flex-shrink:0;font-family:var(--fh);
+}
+.qo:hover:not(.ans) .ql{background:var(--grn);border-color:var(--grn);color:#fff}
+.qo.correct .ql{background:var(--grn);border-color:var(--grn);color:#fff}
+.qo.wrong .ql{background:var(--red);border-color:var(--red);color:#fff}
+.expl{
+  background:var(--blu-l);border:1.5px solid #bfdbfe;
+  border-radius:13px;padding:15px 18px;
+  font-size:.88rem;line-height:1.7;color:var(--txt2);margin-bottom:18px;
+}
+.expl strong{color:var(--blu)}
+.score-screen{text-align:center;padding:52px 36px}
+.sc-big{font-family:var(--fh);font-size:5rem;font-weight:800;color:var(--grn);line-height:1}
+.sc-lbl{color:var(--muted);margin:8px 0 24px;font-size:.97rem;font-weight:600}
+
+/* ════════════════════════════════════
+   AI GENERATOR
+════════════════════════════════════ */
+.aigen-wrap{max-width:760px;margin:0 auto;padding:40px 0}
+.aigen-card{background:var(--s1);border:1.5px solid var(--border);border-radius:var(--r2);padding:30px;margin-bottom:20px;box-shadow:var(--sh)}
+.aigen-title{font-family:var(--fh);font-size:1.55rem;font-weight:800;letter-spacing:-.5px;margin-bottom:6px;color:var(--txt)}
+.aigen-sub{color:var(--muted);font-size:.9rem;line-height:1.65;margin-bottom:24px}
+.ai-form{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px}
+.aif-label{font-size:.7rem;font-weight:700;letter-spacing:.4px;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.aif-select,.aif-input{
+  background:var(--bg);border:1.5px solid var(--border);
+  border-radius:10px;padding:11px 14px;
+  font-size:.88rem;color:var(--txt);width:100%;transition:border-color .2s;
+}
+.aif-select:focus,.aif-input:focus{outline:none;border-color:var(--grn)}
+.aif-select option{background:var(--bg)}
+.prompt-area{
+  background:var(--bg);border:1.5px solid var(--border);
+  border-radius:10px;padding:13px 15px;
+  font-size:.88rem;color:var(--txt);width:100%;
+  height:82px;resize:none;margin-bottom:16px;
+  transition:border-color .2s;
+}
+.prompt-area:focus{outline:none;border-color:var(--grn)}
+.prompt-area::placeholder{color:var(--subtle)}
+.gen-btn{
+  width:100%;padding:15px;background:linear-gradient(135deg,var(--ylw),#d97706);
+  color:#fff;font-weight:800;font-size:.97rem;
+  border:none;border-radius:12px;cursor:pointer;
+  font-family:var(--fb);transition:all .2s;
+  display:flex;align-items:center;justify-content:center;gap:9px;
+  box-shadow:0 4px 18px rgba(245,158,11,.3);
+}
+.gen-btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(245,158,11,.4)}
+.gen-btn:disabled{opacity:.55;cursor:not-allowed;transform:none;box-shadow:none}
+.gen-progress{
+  background:var(--ylw-l);border:1.5px solid #fcd34d;
+  border-radius:14px;padding:22px;margin-bottom:18px;
+}
+.gp-title{font-family:var(--fh);font-size:1rem;font-weight:700;color:var(--ylw);margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.gp-step{
+  display:flex;align-items:center;gap:11px;
+  padding:10px 13px;background:var(--s1);border:1.5px solid var(--border);
+  border-radius:9px;font-size:.84rem;margin-bottom:8px;transition:all .3s;
+  color:var(--txt2);
+}
+.gp-step.active{background:var(--ylw-l);border-color:#fcd34d;color:var(--txt)}
+.gp-step.done{background:var(--grn-l);border-color:var(--grn-m);color:var(--grn)}
+.gp-ico{
+  width:26px;height:26px;border-radius:50%;
+  background:var(--bg2);display:flex;align-items:center;
+  justify-content:center;font-size:.78rem;flex-shrink:0;
+}
+.gp-step.active .gp-ico{background:var(--ylw);color:#fff;animation:pulse-ico .8s ease-in-out infinite}
+.gp-step.done .gp-ico{background:var(--grn);color:#fff}
+@keyframes pulse-ico{0%,100%{box-shadow:0 0 0 0 rgba(245,158,11,.4)}50%{box-shadow:0 0 0 6px rgba(245,158,11,0)}}
+.gen-results{display:flex;flex-direction:column;gap:13px}
+.gen-ex{
+  background:var(--s1);border:1.5px solid var(--grn-m);
+  border-radius:var(--r);padding:20px;
+  animation:fu .4s ease both;box-shadow:var(--sh);
+}
+.ge-q{font-family:var(--fh);font-size:.97rem;font-weight:700;line-height:1.35;margin-bottom:12px;color:var(--txt)}
+.ge-opts{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:12px}
+.ge-opt{
+  background:var(--bg);border:1.5px solid var(--border);
+  border-radius:8px;padding:8px 11px;font-size:.8rem;color:var(--txt2);
+}
+.ge-opt.ca{border-color:var(--grn);background:var(--grn-l);color:var(--grn)}
+
+/* ════════════════════════════════════
+   DUEL
+════════════════════════════════════ */
+.duel-page-wrap{padding:36px 0}
+.lobby-title{font-family:var(--fh);font-size:clamp(2rem,3.5vw,3rem);font-weight:800;letter-spacing:-1.5px;margin-bottom:12px;text-align:center;color:var(--txt)}
+.lobby-title span{color:var(--blu)}
+.lobby-sub{color:var(--muted);font-size:.96rem;line-height:1.7;max-width:490px;margin:0 auto 36px;text-align:center}
+.lobby-modes{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:780px;margin:0 auto 28px}
+.lm{
+  background:var(--s1);border:1.5px solid var(--border);
+  border-radius:var(--r);padding:22px;cursor:pointer;
+  transition:all .2s;box-shadow:var(--sh);
+}
+.lm:hover{transform:translateY(-3px);border-color:#93c5fd;box-shadow:var(--sh2)}
+.lm.sel{border-color:var(--blu);background:var(--blu-l);box-shadow:0 4px 18px rgba(37,99,235,.15)}
+.lm-ico{font-size:1.7rem;margin-bottom:10px}
+.lm-t{font-family:var(--fh);font-size:.95rem;font-weight:700;margin-bottom:4px;color:var(--txt)}
+.lm-d{font-size:.78rem;color:var(--muted)}
+.lobby-btns{display:flex;gap:12px;justify-content:center;margin-bottom:14px;flex-wrap:wrap}
+.lobby-note{text-align:center;font-size:.77rem;color:var(--muted)}
+
+/* Scoreboard */
+.scoreboard{display:grid;grid-template-columns:1fr auto 1fr;gap:14px;align-items:center;margin-bottom:20px}
+.sb-pl{background:var(--s1);border:1.5px solid var(--border);border-radius:var(--r);padding:16px 20px;display:flex;align-items:center;gap:12px;box-shadow:var(--sh)}
+.sb-pl.p2{flex-direction:row-reverse;text-align:right}
+.av{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.av1{background:var(--grn-l);border:2.5px solid var(--grn-m)}
+.av2{background:var(--blu-l);border:2.5px solid #93c5fd}
+.sb-name{font-weight:700;font-size:.85rem;color:var(--muted)}
+.sb-pts{font-family:var(--fh);font-size:2rem;font-weight:800}
+.sb-mid{text-align:center}
+.d-rnd{font-size:.69rem;color:var(--muted);text-transform:uppercase;letter-spacing:.8px;margin-bottom:3px;font-weight:700}
+.d-clk{font-family:var(--fh);font-size:2.4rem;font-weight:800;color:var(--red);line-height:1}
+.d-clk.urg{animation:blink .5s ease-in-out infinite}
+@keyframes blink{0%,100%{color:var(--red)}50%{color:var(--ylw)}}
+
+.arena-main{display:grid;grid-template-columns:1fr 320px;gap:20px}
+.duel-qcard{background:var(--s1);border:1.5px solid var(--border);border-radius:var(--r);padding:26px;box-shadow:var(--sh)}
+.duel-q{font-family:var(--fh);font-size:1.22rem;font-weight:700;margin-bottom:22px;line-height:1.35;color:var(--txt)}
+.duel-opts{display:flex;flex-direction:column;gap:10px}
+.do{
+  display:flex;align-items:center;gap:11px;
+  padding:13px 16px;background:var(--bg);
+  border:1.5px solid var(--border);border-radius:11px;
+  cursor:pointer;transition:all .18s;font-size:.9rem;
+  position:relative;color:var(--txt2);font-weight:500;
+}
+.do:hover:not(.locked){border-color:var(--blu);background:var(--blu-l);color:var(--blu)}
+.do.chosen{border-color:var(--blu);background:var(--blu-l);color:var(--blu)}
+.do.rv-ok{border-color:var(--grn);background:var(--grn-l);color:var(--grn)}
+.do.rv-ko{border-color:var(--red);background:var(--red-l);color:var(--red)}
+.dl{
+  width:26px;height:26px;border-radius:7px;
+  background:var(--bg2);border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  font-size:.74rem;font-weight:800;flex-shrink:0;font-family:var(--fh);
+}
+.opp-ind{position:absolute;right:14px;font-size:.7rem;color:var(--blu);font-weight:700;opacity:0;transition:opacity .3s}
+.opp-ind.show{opacity:1}
+
+/* Coach */
+.coach-panel{display:flex;flex-direction:column;gap:12px}
+.coach-card{
+  background:linear-gradient(135deg,var(--pur-l),#e0e7ff);
+  border:1.5px solid #c4b5fd;border-radius:var(--r);
+  padding:16px;flex:1;box-shadow:var(--sh);
+}
+.coach-hd{display:flex;align-items:center;gap:9px;margin-bottom:14px}
+.c-av{
+  width:34px;height:34px;border-radius:50%;
+  background:var(--pur);display:flex;align-items:center;justify-content:center;
+  font-size:.95rem;
+}
+.c-name{font-family:var(--fh);font-size:.87rem;font-weight:700;color:var(--pur)}
+.c-st{font-size:.7rem;color:var(--muted);display:flex;align-items:center;gap:4px}
+.c-dot{width:5px;height:5px;border-radius:50%;background:var(--grn);animation:pd 1.5s ease-in-out infinite}
+@keyframes pd{0%,100%{opacity:1}50%{opacity:.3}}
+.c-msgs{display:flex;flex-direction:column;gap:7px;height:200px;overflow-y:auto;padding-right:3px}
+.c-msgs::-webkit-scrollbar{width:3px}
+.c-msg{background:rgba(255,255,255,.7);border-radius:9px;padding:10px 12px;font-size:.79rem;line-height:1.6;color:var(--txt2);border-left:3px solid #c4b5fd}
+.c-msg.hint{border-color:var(--ylw);background:rgba(254,243,199,.7)}
+.c-msg.hint strong{color:var(--ylw)}
+.c-msg.warn{border-color:var(--red)}.c-msg.warn strong{color:var(--red)}
+.c-msg.good{border-color:var(--grn);background:rgba(220,252,231,.7)}.c-msg.good strong{color:var(--grn)}
+.c-msg-t{font-size:.65rem;color:var(--subtle);margin-top:3px}
+.streak-row{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.streak-card{background:var(--s1);border:1.5px solid var(--border);border-radius:10px;padding:12px;text-align:center;box-shadow:var(--sh)}
+.st-n{font-family:var(--fh);font-size:1.6rem;font-weight:800}
+.st-l{font-size:.7rem;color:var(--muted);margin-top:2px;font-weight:600}
+
+/* Post duel chat */
+.chat-panel{background:var(--s1);border:1.5px solid var(--border);border-radius:var(--r);padding:20px;margin-top:18px;box-shadow:var(--sh)}
+.chat-title{font-family:var(--fh);font-size:.97rem;font-weight:700;margin-bottom:14px;display:flex;align-items:center;gap:8px;color:var(--txt)}
+.online-dot{width:7px;height:7px;border-radius:50%;background:var(--grn);display:inline-block;animation:pd 2s ease-in-out infinite}
+.chat-msgs{height:170px;overflow-y:auto;display:flex;flex-direction:column;gap:8px;margin-bottom:12px}
+.chat-msg{display:flex;gap:8px;align-items:flex-start}
+.chat-msg.me{flex-direction:row-reverse}
+.cm-av{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.75rem;flex-shrink:0;font-weight:700;color:#fff}
+.cm-av.av-me{background:var(--grn)}
+.cm-av.av-him{background:var(--blu)}
+.cm-bubble{background:var(--bg);border:1.5px solid var(--border);border-radius:11px;padding:8px 12px;font-size:.8rem;line-height:1.5;max-width:200px;color:var(--txt2)}
+.chat-msg.me .cm-bubble{background:var(--grn-l);border-color:var(--grn-m);color:var(--txt)}
+.chat-input-row{display:flex;gap:8px}
+.chat-inp{flex:1;background:var(--bg);border:1.5px solid var(--border);border-radius:50px;padding:9px 16px;font-size:.83rem;color:var(--txt);transition:border-color .2s}
+.chat-inp:focus{outline:none;border-color:var(--grn)}
+.chat-inp::placeholder{color:var(--subtle)}
+.chat-send{background:var(--grn);color:#fff;border:none;border-radius:50px;padding:9px 18px;font-weight:700;font-size:.82rem;cursor:pointer;font-family:var(--fb);transition:all .2s}
+.chat-send:hover{background:#15803d}
+
+/* Round end */
+.re-overlay{position:fixed;inset:0;background:rgba(28,25,23,.75);backdrop-filter:blur(14px);z-index:700;display:flex;align-items:center;justify-content:center}
+.re-card{background:var(--s1);border:1.5px solid var(--border);border-radius:var(--r2);padding:44px;text-align:center;max-width:480px;width:90%;animation:popIn .4s cubic-bezier(.34,1.56,.64,1) both;box-shadow:var(--sh3)}
+@keyframes popIn{from{opacity:0;transform:scale(.88)}to{opacity:1;transform:scale(1)}}
+.re-t{font-family:var(--fh);font-size:2rem;font-weight:800;margin-bottom:7px;color:var(--txt)}
+.re-s{color:var(--muted);font-size:.9rem;margin-bottom:24px}
+.re-scores{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px}
+.re-pl{background:var(--bg);border:1.5px solid var(--border);border-radius:12px;padding:16px}
+.re-pn{font-size:.76rem;color:var(--muted);margin-bottom:5px;font-weight:600}
+.re-pts{font-family:var(--fh);font-size:2.4rem;font-weight:800}
+.re-win{background:var(--grn-l);border:1.5px solid var(--grn-m);border-radius:11px;padding:11px;color:var(--grn);font-weight:700;margin-bottom:20px;font-size:.9rem}
+
+/* Online rooms */
+.room-card{background:var(--s1);border:1.5px solid var(--border);border-radius:var(--r);padding:22px;margin-bottom:14px;box-shadow:var(--sh)}
+.room-code{font-family:var(--fh);font-size:2.4rem;font-weight:800;letter-spacing:8px;color:var(--grn);text-align:center;padding:16px;background:var(--grn-l);border:1.5px solid var(--grn-m);border-radius:12px;margin:14px 0;cursor:pointer;transition:all .2s}
+.room-code:hover{background:#bbf7d0}
+.room-status{display:flex;align-items:center;justify-content:center;gap:8px;font-size:.88rem;color:var(--muted);margin-bottom:14px;font-weight:600}
+.room-dot{width:8px;height:8px;border-radius:50%;background:var(--ylw);animation:pd 1s ease-in-out infinite}
+.room-dot.ready{background:var(--grn);animation:none}
+.waiting-spinner{display:flex;gap:5px;justify-content:center;margin:12px 0}
+.ws-dot{width:8px;height:8px;border-radius:50%;background:var(--blu-l);border:2px solid var(--blu);animation:ws 1.2s ease-in-out infinite}
+.ws-dot:nth-child(2){animation-delay:.2s}.ws-dot:nth-child(3){animation-delay:.4s}
+@keyframes ws{0%,60%,100%{transform:translateY(0);opacity:.4}30%{transform:translateY(-8px);opacity:1}}
+
+/* ════════════════════════════════════
+   PLANNING
+════════════════════════════════════ */
+.plan-wrap{max-width:900px;margin:0 auto;padding:36px 0}
+.plan-setup{background:var(--s1);border:1.5px solid var(--border);border-radius:var(--r);padding:26px;margin-bottom:20px;box-shadow:var(--sh)}
+.pss-title{font-family:var(--fh);font-size:1rem;font-weight:700;margin-bottom:18px;color:var(--grn)}
+.plan-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px}
+.plan-checkboxes{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.plan-cb{
+  display:flex;align-items:center;gap:7px;
+  background:var(--bg);border:1.5px solid var(--border);
+  border-radius:9px;padding:8px 13px;cursor:pointer;
+  transition:all .18s;font-size:.84rem;color:var(--muted);font-weight:600;
+}
+.plan-cb.on{border-color:var(--grn);background:var(--grn-l);color:var(--grn)}
+.plan-cb-dot{width:7px;height:7px;border-radius:50%;background:currentColor;flex-shrink:0}
+.plan-gen-btn{
+  width:100%;padding:14px;
+  background:linear-gradient(135deg,var(--pur),#6d28d9);
+  color:#fff;font-weight:800;font-size:.94rem;
+  border:none;border-radius:11px;cursor:pointer;
+  font-family:var(--fb);transition:all .2s;
+  box-shadow:0 4px 18px rgba(124,58,237,.25);
+}
+.plan-gen-btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(124,58,237,.35)}
+.plan-gen-btn:disabled{opacity:.5;cursor:not-allowed;transform:none;box-shadow:none}
+
+.plan-result{display:flex;flex-direction:column;gap:16px}
+.week-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:9px}
+.day-col{background:var(--s1);border:1.5px solid var(--border);border-radius:12px;padding:13px 10px;animation:fu .4s ease both;box-shadow:var(--sh)}
+.day-col.today{border-color:var(--grn);background:var(--grn-l)}
+.day-name{font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);margin-bottom:8px;text-align:center}
+.day-col.today .day-name{color:var(--grn)}
+.day-tasks{display:flex;flex-direction:column;gap:6px}
+.day-task{border-radius:7px;padding:7px 8px;font-size:.72rem;line-height:1.45;font-weight:600}
+.dt-math{background:var(--grn-l);color:var(--grn)}
+.dt-fr{background:var(--pur-l);color:var(--pur)}
+.dt-hist{background:var(--red-l);color:var(--red)}
+.dt-sci{background:var(--blu-l);color:var(--blu)}
+.dt-eng{background:var(--ylw-l);color:var(--ylw)}
+.dt-rest{background:var(--bg2);color:var(--muted)}
+.dt-dur{font-size:.65rem;opacity:.75;margin-top:2px;font-weight:500}
+.plan-insight{background:var(--pur-l);border:1.5px solid #c4b5fd;border-radius:var(--r);padding:20px;box-shadow:var(--sh)}
+.pi-title{font-family:var(--fh);font-size:.97rem;font-weight:700;color:var(--pur);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.pi-items{display:flex;flex-direction:column;gap:9px}
+.pi-item{display:flex;align-items:flex-start;gap:10px;font-size:.84rem;color:var(--txt2);line-height:1.55}
+.pi-item strong{color:var(--txt)}
+.pi-dot{width:6px;height:6px;border-radius:50%;background:var(--pur);flex-shrink:0;margin-top:6px}
+
+/* ════════════════════════════════════
+   DASHBOARD
+════════════════════════════════════ */
+.dash-layout{display:grid;grid-template-columns:1fr 288px;gap:24px;padding:36px 0}
+.dash-main{display:flex;flex-direction:column;gap:20px}
+.dash-side{display:flex;flex-direction:column;gap:16px}
+.dash-welcome{font-family:var(--fh);font-size:1.6rem;font-weight:800;letter-spacing:-.4px;color:var(--txt)}
+.dash-welcome span{color:var(--grn)}
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.stat-card{background:var(--s1);border:1.5px solid var(--border);border-radius:12px;padding:18px;box-shadow:var(--sh)}
+.sc-v{font-family:var(--fh);font-size:1.9rem;font-weight:800}
+.sc-l{font-size:.73rem;color:var(--muted);margin-top:3px;font-weight:600}
+.sc-ch{font-size:.71rem;margin-top:5px;display:flex;align-items:center;gap:3px;font-weight:600}
+.up{color:var(--grn)}.dn{color:var(--red)}
+.sp-row{display:flex;align-items:center;gap:13px;margin-bottom:11px}
+.sp-ico{font-size:1.1rem;width:28px;text-align:center}
+.sp-info{flex:1}
+.sp-top{display:flex;justify-content:space-between;font-size:.81rem;margin-bottom:4px}
+.sp-name{font-weight:700;color:var(--txt)}.sp-pct{color:var(--muted)}
+.sp-bar{height:5px;background:var(--bg2);border-radius:50px;overflow:hidden;border:1px solid var(--border)}
+.sp-fill{height:100%;border-radius:50px;background:linear-gradient(90deg,var(--grn-m),var(--grn))}
+.act-item{display:flex;align-items:center;gap:12px;background:var(--s1);border:1.5px solid var(--border);border-radius:10px;padding:12px 15px;margin-bottom:8px;box-shadow:var(--sh);transition:all .18s}
+.act-item:hover{border-color:var(--border2);transform:translateX(3px)}
+.act-ico{font-size:1rem;width:26px;text-align:center}
+.act-info{flex:1}
+.act-t{font-size:.84rem;font-weight:700;color:var(--txt)}
+.act-s{font-size:.73rem;color:var(--muted);margin-top:1px}
+.act-pts{font-family:var(--fh);font-size:.9rem;color:var(--grn);font-weight:800}
+.lb-item{display:flex;align-items:center;gap:11px;background:var(--s1);border:1.5px solid var(--border);border-radius:9px;padding:10px 14px;margin-bottom:6px;box-shadow:var(--sh)}
+.lb-r{width:18px;font-family:var(--fh);font-size:.83rem;font-weight:800;color:var(--muted);text-align:center;flex-shrink:0}
+.lb-r.g{color:var(--ylw)}.lb-r.s{color:var(--muted)}.lb-r.b{color:var(--org)}
+.lb-n{flex:1;font-size:.84rem;font-weight:700;color:var(--txt)}
+.lb-x{font-family:var(--fh);font-size:.86rem;color:var(--grn);font-weight:800}
+.lb-me{border-color:var(--grn-m);background:var(--grn-l)}
+
+/* ════════════════════════════════════
+   CHARTS / STATS
+════════════════════════════════════ */
+.charts-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:20px}
+.chart-card{background:var(--s1);border:1.5px solid var(--border);border-radius:var(--r);padding:20px;box-shadow:var(--sh)}
+.chart-title{font-family:var(--fh);font-size:.97rem;font-weight:700;margin-bottom:16px;display:flex;align-items:center;justify-content:space-between;color:var(--txt)}
+.chart-sub{font-size:.72rem;color:var(--muted);font-family:var(--fb);font-weight:500}
+.mini-chart{height:120px;display:flex;align-items:flex-end;gap:6px;padding-bottom:4px}
+.bar-col{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px}
+.bar{border-radius:5px 5px 0 0;width:100%;transition:height 1s ease;min-height:4px}
+.bar-lbl{font-size:.62rem;color:var(--muted);text-align:center;font-weight:600}
+.bar-val{font-size:.65rem;font-weight:800;text-align:center}
+
+/* Level badges */
+.lv-debutant{background:#f1f5f9;color:#64748b;border:1.5px solid #e2e8f0}
+.lv-bronze{background:var(--org-l);color:var(--org);border:1.5px solid #fed7aa}
+.lv-argent{background:#f1f5f9;color:#64748b;border:1.5px solid #cbd5e1}
+.lv-or{background:var(--ylw-l);color:var(--ylw);border:1.5px solid #fcd34d}
+.lv-expert{background:var(--blu-l);color:var(--blu);border:1.5px solid #93c5fd}
+.lv-legende{background:var(--pur-l);color:var(--pur);border:1.5px solid #c4b5fd}
+.xp-bar-wrap{background:var(--bg2);border-radius:50px;height:8px;overflow:hidden;margin:6px 0 3px;border:1px solid var(--border)}
+.xp-bar-fill{height:100%;border-radius:50px;transition:width 1s ease;background:linear-gradient(90deg,var(--grn-m),var(--grn))}
+.xp-bar-fill.bronze{background:linear-gradient(90deg,var(--org),#f97316)}
+.xp-bar-fill.or{background:linear-gradient(90deg,var(--ylw),#d97706)}
+.xp-bar-fill.expert{background:linear-gradient(90deg,var(--blu),#1d4ed8)}
+
+/* Level up overlay */
+.lvup-overlay{position:fixed;inset:0;background:rgba(28,25,23,.88);backdrop-filter:blur(16px);z-index:1000;display:flex;align-items:center;justify-content:center}
+.lvup-card{text-align:center;animation:lvupIn .6s cubic-bezier(.34,1.56,.64,1) both;max-width:400px;padding:20px}
+@keyframes lvupIn{from{opacity:0;transform:scale(.5)}to{opacity:1;transform:scale(1)}}
+.lvup-ico{font-size:6rem;margin-bottom:12px;animation:spin .8s ease both .3s}
+@keyframes spin{from{transform:rotate(-180deg) scale(0)}to{transform:rotate(0) scale(1)}}
+.lvup-title{font-family:var(--fh);font-size:2.8rem;font-weight:800;letter-spacing:-1px;margin-bottom:6px;color:#fff}
+.lvup-sub{color:rgba(255,255,255,.75);font-size:1rem;margin-bottom:28px}
+.lvup-stars{font-size:2.2rem;letter-spacing:10px;margin-bottom:22px}
+
+/* ════════════════════════════════════
+   PROF PAGE
+════════════════════════════════════ */
+.prof-page-wrap{max-width:960px;margin:0 auto;padding:36px 0}
+.prof-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px}
+.prof-page-title{font-family:var(--fh);font-size:1.8rem;font-weight:800;letter-spacing:-.5px;color:var(--txt)}
+.prof-tabs{display:flex;gap:3px;background:var(--bg2);border:1.5px solid var(--border);border-radius:11px;padding:3px}
+.ptab{padding:8px 18px;border-radius:8px;font-size:.83rem;font-weight:700;cursor:pointer;transition:all .2s;color:var(--muted)}
+.ptab.on{background:var(--s1);color:var(--txt);border:1.5px solid var(--border);box-shadow:var(--sh)}
+.create-form{background:var(--s1);border:1.5px solid var(--border);border-radius:var(--r);padding:28px;box-shadow:var(--sh)}
+.form-sec-t{font-family:var(--fh);font-size:.97rem;font-weight:700;margin-bottom:16px;padding-bottom:10px;border-bottom:1.5px solid var(--border);color:var(--grn)}
+.inp{background:var(--bg);border:1.5px solid var(--border);border-radius:9px;padding:11px 14px;font-size:.89rem;color:var(--txt);width:100%;font-family:var(--fb);transition:border-color .2s}
+.inp:focus{outline:none;border-color:var(--grn)}
+.inp::placeholder{color:var(--subtle)}
+.inp.ta{height:76px;resize:vertical}
+.form-g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:13px;margin-bottom:14px}
+.flbl{font-size:.7rem;font-weight:700;letter-spacing:.4px;text-transform:uppercase;color:var(--muted);margin-bottom:5px}
+.ans-row{display:flex;gap:9px;align-items:center;margin-bottom:7px}
+.ans-inp{flex:1;background:var(--bg);border:1.5px solid var(--border);border-radius:8px;padding:9px 13px;font-size:.85rem;color:var(--txt);font-family:var(--fb)}
+.ans-inp:focus{outline:none;border-color:var(--grn)}
+.ans-ok{padding:7px 12px;border-radius:8px;font-size:.74rem;font-weight:700;cursor:pointer;border:1.5px solid var(--border);background:var(--bg);color:var(--muted);transition:all .2s;white-space:nowrap}
+.ans-ok.yes{background:var(--grn-l);border-color:var(--grn-m);color:var(--grn)}
+.ai-gen-bar{display:flex;align-items:center;justify-content:center;gap:9px;width:100%;padding:12px;background:var(--ylw-l);border:1.5px dashed #fcd34d;border-radius:10px;color:var(--ylw);font-weight:700;font-size:.89rem;cursor:pointer;margin-bottom:14px;font-family:var(--fb);transition:all .2s}
+.ai-gen-bar:hover{background:#fef9c3}
+.pub-btn{width:100%;padding:13px;background:var(--grn);color:#fff;font-weight:800;font-size:.91rem;border:none;border-radius:10px;cursor:pointer;font-family:var(--fb);box-shadow:0 4px 14px rgba(22,163,74,.25);transition:all .2s}
+.pub-btn:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(22,163,74,.35)}
+.pub-item{display:flex;align-items:center;gap:15px;background:var(--s1);border:1.5px solid var(--border);border-radius:12px;padding:16px 18px;margin-bottom:10px;box-shadow:var(--sh)}
+.pub-t{font-weight:700;font-size:.91rem;margin-bottom:3px;color:var(--txt)}
+.pub-m{font-size:.74rem;color:var(--muted)}
+.pub-vn{font-family:var(--fh);font-size:1.1rem;font-weight:800;color:var(--grn)}
+.pub-vl{font-size:.68rem;color:var(--muted)}
+
+/* ════════════════════════════════════
+   AUTH MODAL
+════════════════════════════════════ */
+.auth-overlay{position:fixed;inset:0;background:rgba(28,25,23,.7);backdrop-filter:blur(14px);z-index:900;display:flex;align-items:center;justify-content:center}
+.auth-card{background:var(--s1);border:1.5px solid var(--border);border-radius:var(--r2);padding:36px;width:90%;max-width:420px;animation:popIn .35s cubic-bezier(.34,1.56,.64,1) both;box-shadow:var(--sh3)}
+.auth-logo{font-family:var(--fh);font-size:1.6rem;font-weight:800;text-align:center;margin-bottom:5px;color:var(--txt)}
+.auth-sub{text-align:center;color:var(--muted);font-size:.86rem;margin-bottom:24px;line-height:1.6}
+.auth-tabs{display:flex;background:var(--bg2);border:1.5px solid var(--border);border-radius:11px;padding:3px;margin-bottom:22px;gap:3px}
+.auth-tab{flex:1;padding:9px;border-radius:8px;font-size:.85rem;font-weight:700;cursor:pointer;text-align:center;color:var(--muted);transition:all .2s}
+.auth-tab.on{background:var(--s1);color:var(--txt);border:1.5px solid var(--border);box-shadow:var(--sh)}
+.auth-field{margin-bottom:13px}
+.auth-label{font-size:.71rem;font-weight:700;letter-spacing:.4px;text-transform:uppercase;color:var(--muted);margin-bottom:5px}
+.auth-input{width:100%;background:var(--bg);border:1.5px solid var(--border);border-radius:10px;padding:12px 15px;font-size:.91rem;color:var(--txt);font-family:var(--fb);transition:border-color .2s}
+.auth-input:focus{outline:none;border-color:var(--grn);background:var(--s1)}
+.auth-input::placeholder{color:var(--subtle)}
+.auth-btn{width:100%;padding:14px;background:var(--grn);color:#fff;font-weight:800;font-size:.96rem;border:none;border-radius:11px;cursor:pointer;font-family:var(--fb);transition:all .2s;margin-top:4px;box-shadow:0 4px 14px rgba(22,163,74,.25)}
+.auth-btn:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(22,163,74,.35)}
+.auth-btn:disabled{opacity:.5;cursor:not-allowed;transform:none;box-shadow:none}
+.auth-error{background:var(--red-l);border:1.5px solid #fca5a5;border-radius:9px;padding:10px 13px;font-size:.83rem;color:var(--red);margin-bottom:12px;line-height:1.5;font-weight:600}
+.auth-switch{text-align:center;margin-top:16px;font-size:.83rem;color:var(--muted)}
+.auth-switch span{color:var(--grn);cursor:pointer;font-weight:700}
+.auth-switch span:hover{text-decoration:underline}
+
+/* Nav user */
+.nav-user{display:flex;align-items:center;gap:9px}
+.nav-avatar{width:32px;height:32px;border-radius:50%;background:var(--grn-l);border:2px solid var(--grn-m);display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:800;color:var(--grn);font-family:var(--fh)}
+.nav-username{font-size:.83rem;font-weight:700;max-width:100px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--txt)}
+.nav-xp{font-size:.71rem;color:var(--grn);font-weight:700}
+
+/* Toast */
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--txt);color:#fff;border-radius:50px;padding:12px 24px;font-size:.86rem;font-weight:700;box-shadow:var(--sh3);z-index:700;animation:toastIn .4s ease both;white-space:nowrap}
+.toast.ok{background:var(--grn)}
+.toast.err{background:var(--red)}
+@keyframes toastIn{from{opacity:0;transform:translateX(-50%) translateY(14px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
+
+/* XP popup */
+.xp-pop{position:fixed;top:76px;right:22px;background:var(--s1);border:1.5px solid var(--grn-m);border-radius:12px;padding:11px 17px;display:flex;align-items:center;gap:9px;box-shadow:var(--sh2);z-index:600;animation:slideIn .4s ease both}
+@keyframes slideIn{from{opacity:0;transform:translateX(56px)}to{opacity:1;transform:translateX(0)}}
+.xp-n{font-family:var(--fh);font-size:1.3rem;font-weight:800;color:var(--grn)}
+
+/* Mobile */
+@media(max-width:768px){
+  nav{padding:0 16px}
+  .nav-links{display:none}
+  .wrap{padding:0 16px}
+  .hero{grid-template-columns:1fr;gap:32px;padding:40px 0 32px}
+  .h-right{display:none}
+  .feat-grid{grid-template-columns:1fr}
+  .subj-grid{grid-template-columns:1fr 1fr}
+  .ex-layout{grid-template-columns:1fr}
+  .sb{display:none}
+  .ex-grid{grid-template-columns:1fr}
+  .dash-layout{grid-template-columns:1fr}
+  .dash-side{display:none}
+  .stats-row{grid-template-columns:1fr 1fr}
+  .arena-main{grid-template-columns:1fr}
+  .coach-panel{display:none}
+  .duel-hl{grid-template-columns:1fr;padding:28px}
+  .prof-2col{grid-template-columns:1fr}
+  .charts-grid{grid-template-columns:1fr}
+  .lobby-modes{grid-template-columns:1fr}
+  .week-grid{grid-template-columns:repeat(4,1fr)}
+  .plan-grid{grid-template-columns:1fr}
+  .h-h1{font-size:2.3rem}
+  .duel-scoreboard{gap:8px}
+  .mob-btn{display:flex!important}
+}
+
+@keyframes fu{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+</style>
+</head>
+<body>
+
+<!-- ══ NAV ══ -->
+<nav>
+  <div class="logo" onclick="go('home')">
+    <span class="logo-dot"></span>Devoir+
+  </div>
+  <button class="mob-btn" onclick="toggleMobMenu()">☰</button>
+  <ul class="nav-links" id="nav-links">
+    <li><a onclick="go('exercises')" id="nl-ex">Exercices</a></li>
+    <li><a onclick="go('aigen')" id="nl-ai">🤖 Générer par IA</a></li>
+    <li><a onclick="go('duel')" id="nl-duel">⚔️ Duel</a></li>
+    <li><a onclick="go('planning')" id="nl-plan">🗓️ Planning IA</a></li>
+    <li><a onclick="go('charts')" id="nl-charts">📊 Stats</a></li>
+    <li><a onclick="go('prof')" id="nl-prof">Espace Prof</a></li>
+    <li><a onclick="go('dashboard')" id="nl-dash">Mon espace</a></li>
+  </ul>
+  <div class="nav-r">
+    <div id="nav-logged-out" style="display:flex;gap:9px">
+      <button class="btn btn-ghost btn-sm" onclick="openAuth('login')">Connexion</button>
+      <button class="btn btn-grn btn-sm" onclick="openAuth('register')">S'inscrire</button>
+    </div>
+    <div id="nav-logged-in" class="nav-user hidden">
+      <div class="nav-avatar" id="nav-av">?</div>
+      <div>
+        <div class="nav-username" id="nav-uname">—</div>
+        <div class="nav-xp" id="nav-uxp">0 XP</div>
+      </div>
+      <button class="btn btn-ghost btn-sm" onclick="logoutUser()">Déco</button>
+    </div>
+  </div>
+</nav>
+
+<!-- ══ AUTH MODAL ══ -->
+<div class="auth-overlay hidden" id="auth-overlay">
+  <div class="auth-card">
+    <div class="auth-logo">Devoir+</div>
+    <div class="auth-sub">La plateforme éducative gratuite avec IA intégrée</div>
+    <div class="auth-tabs">
+      <div class="auth-tab on" id="atab-login" onclick="switchAuthTab('login')">Connexion</div>
+      <div class="auth-tab" id="atab-register" onclick="switchAuthTab('register')">Inscription</div>
+    </div>
+    <div id="auth-error" class="auth-error hidden"></div>
+    <div id="auth-login-form">
+      <div class="auth-field"><div class="auth-label">Email</div><input class="auth-input" type="email" id="li-email" placeholder="ton@email.com"/></div>
+      <div class="auth-field"><div class="auth-label">Mot de passe</div><input class="auth-input" type="password" id="li-pass" placeholder="••••••••" onkeydown="if(event.key==='Enter')doLogin()"/></div>
+      <button class="auth-btn" id="li-btn" onclick="doLogin()">Se connecter →</button>
+      <div class="auth-switch">Pas encore de compte ? <span onclick="switchAuthTab('register')">S'inscrire gratuitement</span></div>
+    </div>
+    <div id="auth-register-form" class="hidden">
+      <div class="auth-field"><div class="auth-label">Pseudo</div><input class="auth-input" type="text" id="re-name" placeholder="TonPseudo"/></div>
+      <div class="auth-field"><div class="auth-label">Email</div><input class="auth-input" type="email" id="re-email" placeholder="ton@email.com"/></div>
+      <div class="auth-field"><div class="auth-label">Mot de passe</div><input class="auth-input" type="password" id="re-pass" placeholder="Au moins 6 caractères" onkeydown="if(event.key==='Enter')doRegister()"/></div>
+      <div class="auth-field"><div class="auth-label">Je suis</div>
+        <select class="auth-input" id="re-role">
+          <option value="student">👨‍🎓 Élève</option>
+          <option value="teacher">👩‍🏫 Enseignant(e)</option>
+        </select>
+      </div>
+      <button class="auth-btn" id="re-btn" onclick="doRegister()">Créer mon compte →</button>
+      <div class="auth-switch">Déjà un compte ? <span onclick="switchAuthTab('login')">Se connecter</span></div>
+    </div>
+    <div style="margin-top:16px;text-align:center">
+      <span style="font-size:.75rem;color:var(--subtle);cursor:pointer" onclick="closeAuth()">✕ Fermer</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══ LEVEL UP ══ -->
+<div class="lvup-overlay hidden" id="lvup-overlay">
+  <div class="lvup-card">
+    <div class="lvup-ico" id="lvup-ico">🏆</div>
+    <div class="lvup-stars">⭐⭐⭐</div>
+    <div class="lvup-title" id="lvup-title">Niveau supérieur !</div>
+    <div class="lvup-sub" id="lvup-sub">Tu as débloqué le niveau Bronze</div>
+    <button class="btn btn-white btn-lg" onclick="closeLvUp()" style="margin-top:8px">Continuer →</button>
+  </div>
+</div>
+
+<!-- ══ XP POPUP ══ -->
+<div class="xp-pop hidden" id="xp-pop">
+  <span style="font-size:1.3rem">⚡</span>
+  <div><div class="xp-n" id="xp-val">+10 XP</div><div style="font-size:.72rem;color:var(--muted);font-weight:600">Bonne réponse !</div></div>
+</div>
+
+<!-- ════════════════════ HOME ════════════════════ -->
+<div class="page active" id="page-home">
+  <div class="wrap">
+    <div class="hero">
+      <div class="blob blob1"></div><div class="blob blob2"></div>
+      <div>
+        <div class="hero-tag"><div class="hero-tag-dot"></div>100% gratuit · Sans pub · IA intégrée</div>
+        <h1 class="hero-h1">La plateforme<br>qui fait <span class="hl-grn">aimer</span><br>les <span class="hl-ylw">devoirs.</span></h1>
+        <p class="hero-p">Des exercices interactifs du primaire au lycée, une <strong>IA qui génère des exercices</strong> sur mesure, un <strong>Mode Duel unique</strong> avec IA Coach, et un <strong>planning personnalisé</strong>. Entièrement gratuit.</p>
+        <div class="hero-acts">
+          <button class="btn btn-grn btn-xl" onclick="go('exercises')">Commencer gratuitement →</button>
+          <button class="btn btn-ghost btn-lg" onclick="go('aigen')">🤖 Générer des exercices</button>
+        </div>
+        <div class="hero-trust">
+          <div class="trust-avatars">
+            <div class="ta ta1">E</div><div class="ta ta2">L</div><div class="ta ta3">S</div><div class="ta ta4">N</div>
+          </div>
+          <div class="trust-text"><strong>+2 400 élèves</strong> déjà inscrits · Noté ⭐⭐⭐⭐⭐</div>
+        </div>
+      </div>
+      <div class="h-right">
+        <div class="demo-card">
+          <div class="demo-float"><div class="df-ico">🏆</div><div><div class="df-n">+120 XP</div><div class="df-l">Série de 7 jours !</div></div></div>
+          <div class="q-card-demo">
+            <div class="qd-meta">
+              <span class="badge b-grn">Mathématiques</span>
+              <span style="font-size:.73rem;color:var(--muted);font-weight:600">CM2 · Q 3/5</span>
+            </div>
+            <div class="qd-prog-wrap"><div class="qd-prog"></div></div>
+            <div class="qd-q">Quel est le résultat de 7 × 8 ?</div>
+            <div class="qd-opts">
+              <div class="qd-opt ok"><div class="qd-ltr">A</div>56 ✓</div>
+              <div class="qd-opt ko"><div class="qd-ltr">B</div>54</div>
+              <div class="qd-opt"><div class="qd-ltr">C</div>48</div>
+              <div class="qd-opt"><div class="qd-ltr">D</div>63</div>
+            </div>
+          </div>
+        </div>
+        <div class="mini-pill" onclick="go('duel')" style="border-color:#bfdbfe">
+          <div class="mp-ico">⚔️</div>
+          <div><div class="mp-t" style="color:var(--blu)">Mode Duel + IA Coach</div><div class="mp-s">Affronte un camarade en temps réel</div></div>
+          <div class="mp-arr">→</div>
+        </div>
+        <div class="mini-pill" onclick="go('planning')" style="border-color:#c4b5fd">
+          <div class="mp-ico">🗓️</div>
+          <div><div class="mp-t" style="color:var(--pur)">Planning IA personnalisé</div><div class="mp-s">Révisions adaptées à tes lacunes</div></div>
+          <div class="mp-arr">→</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Features -->
+  <div style="background:var(--bg2);border-top:1.5px solid var(--border);border-bottom:1.5px solid var(--border)">
+    <div class="wrap"><div class="sec">
+      <div class="sec-chip">✦ Fonctionnalités</div>
+      <h2 class="sec-h">Tout ce dont tu as besoin,<br>en un seul endroit.</h2>
+      <p class="sec-p">Une plateforme pensée pour les élèves et les enseignants, sans abonnement ni publicité.</p>
+      <div class="feat-grid">
+        <div class="fc" style="--fc-c:var(--ylw);--fc-bg:var(--ylw-l)"><div class="fc-ico">🤖</div><div class="fc-t">Génération IA en live <span class="fc-new">NOUVEAU</span></div><div class="fc-d">Décris ce que tu veux et l'IA génère des exercices personnalisés en quelques secondes, avec corrections et explications.</div></div>
+        <div class="fc" style="--fc-c:var(--blu);--fc-bg:var(--blu-l)"><div class="fc-ico">⚔️</div><div class="fc-t">Mode Duel IA Coach</div><div class="fc-d">Affronte un camarade en temps réel. Une IA analyse chaque réponse et te souffle des indices en direct.</div></div>
+        <div class="fc" style="--fc-c:var(--grn);--fc-bg:var(--grn-l)"><div class="fc-ico">💬</div><div class="fc-t">Chat post-duel <span class="fc-new">NOUVEAU</span></div><div class="fc-d">Après le duel, un espace de chat pour analyser les erreurs ensemble et préparer la revanche.</div></div>
+        <div class="fc" style="--fc-c:var(--pur);--fc-bg:var(--pur-l)"><div class="fc-ico">🗓️</div><div class="fc-t">Planning IA personnalisé <span class="fc-new">NOUVEAU</span></div><div class="fc-d">L'IA analyse tes résultats et crée un plan de révision semaine par semaine, adapté à tes lacunes réelles.</div></div>
+        <div class="fc" style="--fc-c:var(--org);--fc-bg:var(--org-l)"><div class="fc-ico">👩‍🏫</div><div class="fc-t">Contenu des profs</div><div class="fc-d">Les enseignants publient leurs propres exercices directement sur la plateforme. L'IA génère des variantes.</div></div>
+        <div class="fc" style="--fc-c:var(--ylw);--fc-bg:var(--ylw-l)"><div class="fc-ico">🏅</div><div class="fc-t">Système de niveaux</div><div class="fc-d">6 niveaux de Débutant à Légende, XP à chaque bonne réponse, badges, streaks et classements hebdo.</div></div>
+      </div>
+    </div></div>
+  </div>
+
+  <!-- Subjects -->
+  <div class="wrap"><div class="sec">
+    <div class="sec-chip">📚 Matières</div>
+    <h2 class="sec-h">Toutes tes matières,<br>un seul endroit.</h2>
+    <div class="subj-grid">
+      <div class="sj" onclick="go('exercises')"><div class="sj-ico">➕</div><div><div class="sj-n">Mathématiques</div><div class="sj-c">3 200 exercices</div></div></div>
+      <div class="sj" onclick="go('exercises')"><div class="sj-ico">📝</div><div><div class="sj-n">Français</div><div class="sj-c">2 800 exercices</div></div></div>
+      <div class="sj" onclick="go('exercises')"><div class="sj-ico">🧪</div><div><div class="sj-n">Sciences</div><div class="sj-c">1 500 exercices</div></div></div>
+      <div class="sj" onclick="go('exercises')"><div class="sj-ico">🌍</div><div><div class="sj-n">Histoire-Géo</div><div class="sj-c">1 200 exercices</div></div></div>
+      <div class="sj" onclick="go('exercises')"><div class="sj-ico">🇬🇧</div><div><div class="sj-n">Anglais</div><div class="sj-c">1 800 exercices</div></div></div>
+      <div class="sj" onclick="go('exercises')"><div class="sj-ico">💻</div><div><div class="sj-n">Informatique</div><div class="sj-c">600 exercices</div></div></div>
+      <div class="sj" onclick="go('exercises')"><div class="sj-ico">🔬</div><div><div class="sj-n">SVT</div><div class="sj-c">900 exercices</div></div></div>
+      <div class="sj" onclick="go('exercises')"><div class="sj-ico">🎨</div><div><div class="sj-n">Arts plastiques</div><div class="sj-c">400 exercices</div></div></div>
+    </div>
+  </div></div>
+
+  <!-- Duel highlight -->
+  <div class="wrap" style="padding-bottom:64px">
+    <div class="duel-hl">
+      <div>
+        <div class="sec-chip" style="background:var(--blu-l);color:var(--blu);border-color:#93c5fd">🔥 Exclusivité mondiale</div>
+        <h2 class="sec-h">Le Mode Duel<br>avec <span style="color:var(--blu);font-style:italic">IA Coach</span></h2>
+        <p style="color:var(--txt2);font-size:.94rem;line-height:1.75;max-width:400px;margin-bottom:8px">Nulle part ailleurs : deux élèves s'affrontent en temps réel, et une IA analyse chacun en direct pour lui souffler des indices personnalisés.</p>
+        <div style="display:flex;flex-direction:column;gap:13px;margin:22px 0">
+          <div style="display:flex;gap:12px;align-items:flex-start"><div style="width:27px;height:27px;border-radius:50%;background:var(--blu-l);border:1.5px solid #93c5fd;color:var(--blu);font-weight:800;font-size:.78rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px">1</div><div style="font-size:.88rem;color:var(--txt2);line-height:1.6"><strong style="color:var(--txt)">Rejoins ou crée un duel</strong> — partage un code à ton camarade</div></div>
+          <div style="display:flex;gap:12px;align-items:flex-start"><div style="width:27px;height:27px;border-radius:50%;background:var(--blu-l);border:1.5px solid #93c5fd;color:var(--blu);font-weight:800;font-size:.78rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px">2</div><div style="font-size:.88rem;color:var(--txt2);line-height:1.6"><strong style="color:var(--txt)">Réponds contre la montre</strong> — même série pour les deux</div></div>
+          <div style="display:flex;gap:12px;align-items:flex-start"><div style="width:27px;height:27px;border-radius:50%;background:var(--blu-l);border:1.5px solid #93c5fd;color:var(--blu);font-weight:800;font-size:.78rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px">3</div><div style="font-size:.88rem;color:var(--txt2);line-height:1.6"><strong style="color:var(--txt)">L'IA Coach analyse</strong> tes erreurs et te guide en direct</div></div>
+          <div style="display:flex;gap:12px;align-items:flex-start"><div style="width:27px;height:27px;border-radius:50%;background:var(--blu-l);border:1.5px solid #93c5fd;color:var(--blu);font-weight:800;font-size:.78rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px">4</div><div style="font-size:.88rem;color:var(--txt2);line-height:1.6"><strong style="color:var(--txt)">Chat post-duel</strong> — analyse ensemble, prépare la revanche</div></div>
+        </div>
+        <button class="btn btn-blu btn-lg" onclick="go('duel')">⚔️ Lancer un Duel</button>
+      </div>
+      <div class="duel-demo-card">
+        <div class="ddc-top"><span style="font-family:var(--fh);font-size:.9rem;font-weight:700;color:var(--blu)">⚔️ Duel en cours</span><span style="font-family:var(--fh);font-size:1.4rem;font-weight:800;color:var(--red)">0:12</span></div>
+        <div class="ddc-sc">
+          <div class="ddc-pl"><div class="ddc-pn">Toi 🎯</div><div class="ddc-pts c-grn">7</div></div>
+          <div class="ddc-vs">VS</div>
+          <div class="ddc-pl"><div class="ddc-pn">Lucas ⚡</div><div class="ddc-pts c-blu">6</div></div>
+        </div>
+        <div class="ddc-q">Combien font 4/5 × 25 ?</div>
+        <div class="ddc-opts">
+          <div class="ddc-o sel">A — 20</div><div class="ddc-o">B — 16</div>
+          <div class="ddc-o">C — 25</div><div class="ddc-o">D — 100</div>
+        </div>
+        <div class="coach-bub-light"><strong>🤖 Coach IA :</strong> Excellent ! 4/5 × 25 = 100/5 = 20. Parfait raisonnement !</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Prof -->
+  <div style="background:var(--bg2);border-top:1.5px solid var(--border);border-bottom:1.5px solid var(--border)">
+    <div class="wrap"><div class="sec">
+      <div class="prof-2col">
+        <div>
+          <div class="sec-chip">👩‍🏫 Espace enseignant</div>
+          <h2 class="sec-h">Tu es prof ?<br>Publie tes exercices.</h2>
+          <p class="sec-p">Crée et partage tes propres exercices en quelques minutes. L'IA génère des variantes automatiquement.</p>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:11px;margin-bottom:28px">
+            <li style="display:flex;align-items:center;gap:10px;color:var(--txt2);font-size:.9rem"><span style="width:20px;height:20px;background:var(--grn-l);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.72rem;flex-shrink:0">✓</span>Interface simple de création d'exercices</li>
+            <li style="display:flex;align-items:center;gap:10px;color:var(--txt2);font-size:.9rem"><span style="width:20px;height:20px;background:var(--grn-l);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.72rem;flex-shrink:0">✓</span>IA pour générer des variantes automatiquement</li>
+            <li style="display:flex;align-items:center;gap:10px;color:var(--txt2);font-size:.9rem"><span style="width:20px;height:20px;background:var(--grn-l);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.72rem;flex-shrink:0">✓</span>Suivi des résultats de tes élèves</li>
+            <li style="display:flex;align-items:center;gap:10px;color:var(--txt2);font-size:.9rem"><span style="width:20px;height:20px;background:var(--grn-l);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.72rem;flex-shrink:0">✓</span>Publication publique ou réservée à ta classe</li>
+          </ul>
+          <button class="btn btn-grn btn-md" onclick="go('prof')">Créer mon espace prof →</button>
+        </div>
+        <div class="pf-demo">
+          <div class="pf-bar"><div class="pfd" style="background:#ff5f5f"></div><div class="pfd" style="background:#f59e0b"></div><div class="pfd" style="background:#22c55e"></div><span style="margin-left:8px;font-size:.72rem;color:var(--muted);font-weight:600">Créer un exercice</span></div>
+          <div class="pf-lbl">Titre</div><div class="pf-inp">Les fractions : addition et soustraction</div>
+          <div class="pf-row"><div><div class="pf-lbl">Matière</div><div class="pf-inp">Mathématiques</div></div><div><div class="pf-lbl">Niveau</div><div class="pf-inp">5ème</div></div></div>
+          <div class="pf-lbl">Énoncé</div><div class="pf-inp t" style="display:block;line-height:1.5">Calcule : 1/3 + 2/5 = ?<br>Donne ta réponse sous forme de fraction.</div>
+          <div class="pf-ai-btn">🤖 Générer des variantes avec l'IA</div>
+          <button class="pf-pub" onclick="go('prof')">Publier l'exercice →</button>
+        </div>
+      </div>
+    </div></div>
+  </div>
+
+  <!-- CTA -->
+  <div class="wrap"><div style="padding:64px 0 0">
+    <div class="cta-strip">
+      <h2 class="cta-h">Prêt à progresser ?</h2>
+      <p class="cta-p">Rejoins Devoir+ gratuitement. Aucune carte bancaire, aucune pub, aucune limite.</p>
+      <div class="cta-btns">
+        <button class="btn btn-white btn-xl" onclick="go('exercises')">🚀 Commencer gratuitement</button>
+        <button class="btn btn-ghost btn-lg" style="border-color:rgba(255,255,255,.3);color:#fff" onclick="go('duel')">⚔️ Mode Duel</button>
+      </div>
+    </div>
+  </div></div>
+
+  <div style="border-top:1.5px solid var(--border)">
+    <footer>
+      <div class="ft-logo">Devoir+</div>
+      <div class="ft-links"><a>À propos</a><a>Contact</a><a>Confidentialité</a><a>CGU</a></div>
+      <div style="color:var(--muted);font-size:.78rem">Projet passion éducatif · 100% gratuit</div>
+    </footer>
+  </div>
+</div>
+
+<!-- ════════════════════ EXERCISES ════════════════════ -->
+<div class="page" id="page-exercises">
+  <div class="wrap"><div class="ex-layout">
+    <div class="sb">
+      <div class="sb-card">
+        <div class="sb-t">Filtres</div>
+        <div class="fg"><div class="fl">Matière</div><div class="chips"><div class="chip on">Tout</div><div class="chip">Maths</div><div class="chip">Français</div><div class="chip">Sciences</div><div class="chip">Anglais</div><div class="chip">Histoire</div></div></div>
+        <div class="fg"><div class="fl">Niveau</div><div class="chips"><div class="chip on">Tout</div><div class="chip">CE1</div><div class="chip">CM2</div><div class="chip">6ème</div><div class="chip">5ème</div><div class="chip">4ème</div><div class="chip">3ème</div></div></div>
+        <div class="fg"><div class="fl">Difficulté</div><div class="chips"><div class="chip on">Tout</div><div class="chip">Facile</div><div class="chip">Moyen</div><div class="chip">Difficile</div></div></div>
+        <div class="fg"><div class="fl">Source</div><div class="chips"><div class="chip on">Tout</div><div class="chip">🤖 IA</div><div class="chip">👩‍🏫 Profs</div></div></div>
+      </div>
+      <div style="background:var(--ylw-l);border:1.5px solid #fcd34d;border-radius:var(--r);padding:15px;cursor:pointer" onclick="go('aigen')">
+        <div style="font-size:1.3rem;margin-bottom:7px">🤖</div>
+        <div style="font-family:var(--fh);font-size:.9rem;font-weight:700;color:var(--ylw);margin-bottom:4px">Générer par IA</div>
+        <div style="font-size:.77rem;color:var(--txt2);line-height:1.5;margin-bottom:9px">Exercices sur mesure en quelques secondes</div>
+        <div style="font-size:.77rem;color:var(--ylw);font-weight:700">Essayer →</div>
+      </div>
+    </div>
+    <div>
+      <div class="ex-tb">
+        <input class="ex-search" placeholder="🔍  Rechercher un exercice..."/>
+        <div style="display:flex;gap:9px;align-items:center">
+          <span style="font-size:.79rem;color:var(--muted);font-weight:600">6 séries</span>
+          <button class="btn btn-ylw btn-sm" onclick="go('aigen')">🤖 Générer</button>
+          <button class="btn btn-blu btn-sm" onclick="go('duel')">⚔️ Duel</button>
+        </div>
+      </div>
+      <div class="ex-grid" id="ex-grid"></div>
+    </div>
+  </div></div>
+</div>
+
+<!-- ════════════════════ PLAYER ════════════════════ -->
+<div class="page" id="page-player">
+  <div class="player-wrap">
+    <div class="pl-head">
+      <div class="pl-back" onclick="go('exercises')">← Retour aux exercices</div>
+      <div id="pl-badge" class="badge b-grn">Matière</div>
+    </div>
+    <div class="pl-pbar"><div class="pl-fill" id="pl-fill" style="width:0%"></div></div>
+    <div class="pq-row"><span id="pl-qnum">Q 1/5</span><span style="color:var(--grn);font-weight:800" id="pl-xp">+0 XP</span></div>
+    <div class="qcard" id="pl-qcard">
+      <div id="pl-qcat" style="margin-bottom:14px"></div>
+      <div class="q-txt" id="pl-qtxt"></div>
+      <div class="q-opts" id="pl-opts"></div>
+      <div class="expl hidden" id="pl-expl"></div>
+      <div style="display:flex;justify-content:flex-end">
+        <button class="btn btn-grn btn-md hidden" id="pl-next" onclick="nextQ()">Question suivante →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════ AI GENERATOR ════════════════════ -->
+<div class="page" id="page-aigen">
+  <div class="wrap"><div class="aigen-wrap">
+    <div class="aigen-card">
+      <div class="aigen-title">🤖 Générer des exercices avec l'IA</div>
+      <div class="aigen-sub">Décris ce que tu veux et l'IA génère des exercices personnalisés en quelques secondes — avec corrections et explications complètes.</div>
+      <div class="ai-form">
+        <div><div class="aif-label">Matière</div><select class="aif-select" id="ai-mat"><option>Mathématiques</option><option>Français</option><option>Histoire-Géo</option><option>Sciences</option><option>Anglais</option><option>SVT</option><option>Informatique</option></select></div>
+        <div><div class="aif-label">Niveau</div><select class="aif-select" id="ai-niv"><option>CE1</option><option>CE2</option><option>CM1</option><option>CM2</option><option>6ème</option><option selected>5ème</option><option>4ème</option><option>3ème</option><option>2nde</option><option>1ère</option><option>Terminale</option></select></div>
+        <div><div class="aif-label">Difficulté</div><select class="aif-select" id="ai-diff"><option>Facile</option><option selected>Moyen</option><option>Difficile</option></select></div>
+        <div><div class="aif-label">Nombre de questions</div><select class="aif-select" id="ai-nb"><option value="3">3 questions</option><option value="5" selected>5 questions</option><option value="8">8 questions</option><option value="10">10 questions</option></select></div>
+      </div>
+      <div class="aif-label" style="margin-bottom:7px">Instructions pour l'IA (optionnel)</div>
+      <textarea class="prompt-area" id="ai-prompt" placeholder="Ex : Exercices sur les fractions avec des situations de la vie quotidienne..."></textarea>
+      <button class="gen-btn" id="gen-btn" onclick="generateExercises()"><span>✨</span>Générer les exercices avec l'IA</button>
+    </div>
+    <div class="gen-progress hidden" id="gen-progress">
+      <div class="gp-title"><span>✨</span>Génération en cours...</div>
+      <div id="gp-steps">
+        <div class="gp-step" id="gs0"><div class="gp-ico">🔍</div><span>Analyse des paramètres...</span></div>
+        <div class="gp-step" id="gs1"><div class="gp-ico">🧠</div><span>Génération des questions...</span></div>
+        <div class="gp-step" id="gs2"><div class="gp-ico">✅</div><span>Validation pédagogique...</span></div>
+        <div class="gp-step" id="gs3"><div class="gp-ico">📖</div><span>Rédaction des explications...</span></div>
+        <div class="gp-step" id="gs4"><div class="gp-ico">📦</div><span>Finalisation...</span></div>
+      </div>
+    </div>
+    <div id="gen-results" class="gen-results"></div>
+  </div></div>
+</div>
+
+<!-- ════════════════════ DUEL ════════════════════ -->
+<div class="page" id="page-duel">
+  <div class="wrap"><div class="duel-page-wrap">
+    <div id="duel-lobby">
+      <div class="lobby-title">⚔️ Mode <span>Duel</span> IA Coach</div>
+      <p class="lobby-sub">Affronte un camarade en temps réel. L'IA analyse chaque réponse et te guide en direct. Chat post-duel inclus.</p>
+      <div class="lobby-modes">
+        <div class="lm sel" id="lm1" onclick="selMode(1)"><div class="lm-ico">⚡</div><div class="lm-t">Express</div><div class="lm-d">5 questions · 15s / question</div></div>
+        <div class="lm" id="lm2" onclick="selMode(2)"><div class="lm-ico">🔥</div><div class="lm-t">Standard</div><div class="lm-d">8 questions · 20s / question</div></div>
+        <div class="lm" id="lm3" onclick="selMode(3)"><div class="lm-ico">🏆</div><div class="lm-t">Champion</div><div class="lm-d">10 questions · 25s / question</div></div>
+      </div>
+      <div class="lobby-btns">
+        <button class="btn btn-grn btn-lg" onclick="startDuel()">⚔️ Duel vs IA (démo)</button>
+        <button class="btn btn-blu btn-lg" onclick="createOnlineRoom()">🌍 Créer un duel en ligne</button>
+        <button class="btn btn-ghost btn-lg" onclick="showJoinRoom()">📋 Code de salle</button>
+      </div>
+      <div class="lobby-note">Mode démo : tu affrontes Lucas (IA) · Mode en ligne : vrai joueur en temps réel</div>
+      <div class="room-card hidden" id="room-create-panel" style="max-width:440px;margin:20px auto 0">
+        <div style="font-family:var(--fh);font-size:1rem;font-weight:700;margin-bottom:10px;text-align:center;color:var(--txt)">🌍 Duel en ligne créé !</div>
+        <div style="font-size:.83rem;color:var(--muted);text-align:center;margin-bottom:8px;font-weight:600">Partage ce code à ton adversaire :</div>
+        <div class="room-code" id="room-code-display" onclick="copyRoomCode()" title="Cliquer pour copier">——</div>
+        <div class="room-status"><div class="room-dot" id="room-dot"></div><span id="room-status-txt">En attente...</span></div>
+        <div class="waiting-spinner" id="waiting-spinner"><div class="ws-dot"></div><div class="ws-dot"></div><div class="ws-dot"></div></div>
+        <button class="btn btn-ghost btn-sm" style="width:100%;margin-top:6px" onclick="cancelRoom()">Annuler</button>
+      </div>
+      <div class="room-card hidden" id="room-join-panel" style="max-width:440px;margin:20px auto 0">
+        <div style="font-family:var(--fh);font-size:1rem;font-weight:700;margin-bottom:14px;text-align:center;color:var(--txt)">📋 Rejoindre un duel</div>
+        <div style="margin-bottom:13px"><div class="flbl" style="text-align:center;margin-bottom:8px">Code du duel</div><input class="auth-input" id="join-code-inp" placeholder="Ex: AB12CD" style="text-align:center;font-family:var(--fh);font-size:1.5rem;letter-spacing:6px;font-weight:800;text-transform:uppercase"/></div>
+        <button class="btn btn-blu btn-md" style="width:100%;margin-bottom:9px" onclick="joinOnlineRoom()">Rejoindre →</button>
+        <button class="btn btn-ghost btn-sm" style="width:100%" onclick="hideJoinRoom()">Annuler</button>
+      </div>
+    </div>
+
+    <div id="duel-arena" class="hidden">
+      <div class="scoreboard">
+        <div class="sb-pl"><div class="av av1">🎯</div><div><div class="sb-name">Toi</div><div class="sb-pts c-grn" id="d-p1">0</div></div></div>
+        <div class="sb-mid"><div class="d-rnd" id="d-rnd">Q 1</div><div class="d-clk" id="d-clk">15</div></div>
+        <div class="sb-pl p2"><div class="av av2">⚡</div><div><div class="sb-name">Lucas</div><div class="sb-pts c-blu" id="d-p2">0</div></div></div>
+      </div>
+      <div class="arena-main">
+        <div class="duel-qcard">
+          <div id="d-badges" style="margin-bottom:14px;display:flex;gap:7px"></div>
+          <div class="duel-q" id="d-q"></div>
+          <div class="duel-opts" id="d-opts"></div>
+          <div class="expl hidden" id="d-expl" style="margin-top:14px"></div>
+        </div>
+        <div class="coach-panel">
+          <div class="coach-card">
+            <div class="coach-hd"><div class="c-av">🤖</div><div><div class="c-name">Coach IA</div><div class="c-st"><div class="c-dot"></div>Analyse en direct</div></div></div>
+            <div class="c-msgs" id="c-msgs"><div class="c-msg">Bienvenue ! Je vais analyser chaque réponse en temps réel. Bonne chance ! 🎯</div></div>
+          </div>
+          <div class="streak-row">
+            <div class="streak-card"><div class="st-n c-grn" id="d-streak">0</div><div class="st-l">🔥 Série</div></div>
+            <div class="streak-card"><div class="st-n c-blu" id="d-acc">—</div><div class="st-l">✓ Précision</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="re-overlay hidden" id="duel-end">
+      <div class="re-card">
+        <div style="font-size:2.8rem;margin-bottom:10px" id="re-ico">🏆</div>
+        <div class="re-t" id="re-t">Duel terminé !</div>
+        <div class="re-s" id="re-s">Résultats finaux</div>
+        <div class="re-scores">
+          <div class="re-pl"><div class="re-pn">Toi 🎯</div><div class="re-pts c-grn" id="re-p1">0</div></div>
+          <div class="re-pl"><div class="re-pn">Lucas ⚡</div><div class="re-pts c-blu" id="re-p2">0</div></div>
+        </div>
+        <div class="re-win" id="re-win"></div>
+        <div style="display:flex;gap:10px;justify-content:center;margin-bottom:14px;flex-wrap:wrap">
+          <button class="btn btn-blu btn-md" onclick="startDuel()">⚔️ Rejouer</button>
+          <button class="btn btn-ghost btn-md" onclick="showPostDuelChat()">💬 Chat</button>
+          <button class="btn btn-pur btn-md" onclick="go('planning')">🗓️ Révisions</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="post-duel-chat" class="hidden">
+      <div class="chat-panel">
+        <div class="chat-title">💬 Chat avec Lucas <div class="online-dot"></div></div>
+        <div class="chat-msgs" id="chat-msgs">
+          <div class="chat-msg"><div class="cm-av av-him">⚡</div><div class="cm-bubble">GG ! Belle partie 🔥</div></div>
+          <div class="chat-msg me"><div class="cm-av av-me">🎯</div><div class="cm-bubble">Merci ! J'ai eu chaud sur la Q3 😅</div></div>
+          <div class="chat-msg"><div class="cm-av av-him">⚡</div><div class="cm-bubble">Revanche demain ? 😏</div></div>
+        </div>
+        <div class="chat-input-row">
+          <input class="chat-inp" id="chat-inp" placeholder="Écris un message..." onkeydown="if(event.key==='Enter')sendChat()"/>
+          <button class="chat-send" onclick="sendChat()">Envoyer</button>
+        </div>
+      </div>
+      <div style="display:flex;gap:10px;margin-top:12px;flex-wrap:wrap">
+        <button class="btn btn-pur btn-md" onclick="go('planning')">🗓️ Générer mon planning</button>
+        <button class="btn btn-ghost btn-md" onclick="go('exercises')">📚 Exercices libres</button>
+      </div>
+    </div>
+  </div></div>
+</div>
+
+<!-- ════════════════════ PLANNING ════════════════════ -->
+<div class="page" id="page-planning">
+  <div class="wrap"><div class="plan-wrap">
+    <div style="margin-bottom:28px">
+      <div style="font-family:var(--fh);font-size:1.8rem;font-weight:800;letter-spacing:-.5px;margin-bottom:5px;color:var(--txt)">🗓️ Planning de révision IA</div>
+      <div style="color:var(--muted);font-size:.9rem">L'IA analyse tes résultats et génère un plan adapté à tes lacunes.</div>
+    </div>
+    <div class="plan-setup" id="plan-setup">
+      <div class="pss-title">⚙️ Configurer mon planning</div>
+      <div class="plan-grid">
+        <div><div class="flbl">Objectif</div><select class="inp" id="pl-obj" style="padding:10px 13px"><option>Révisions générales</option><option>Préparer un contrôle</option><option>Rattraper du retard</option><option>Approfondir les points forts</option></select></div>
+        <div><div class="flbl">Temps / jour</div><select class="inp" id="pl-time" style="padding:10px 13px"><option>15 minutes</option><option selected>30 minutes</option><option>45 minutes</option><option>1 heure</option></select></div>
+        <div><div class="flbl">Niveau</div><select class="inp" id="pl-niv" style="padding:10px 13px"><option>CM1</option><option>CM2</option><option>6ème</option><option selected>5ème</option><option>4ème</option><option>3ème</option><option>Lycée</option></select></div>
+        <div><div class="flbl">Échéance</div><input class="inp" type="date" id="pl-date" style="padding:10px 13px"/></div>
+      </div>
+      <div class="flbl" style="margin-bottom:8px">Matières à inclure</div>
+      <div class="plan-checkboxes" id="pl-subjects">
+        <div class="plan-cb on" onclick="toggleCb(this)"><div class="plan-cb-dot"></div>➕ Maths</div>
+        <div class="plan-cb on" onclick="toggleCb(this)"><div class="plan-cb-dot"></div>📝 Français</div>
+        <div class="plan-cb" onclick="toggleCb(this)"><div class="plan-cb-dot"></div>🌍 Histoire-Géo</div>
+        <div class="plan-cb" onclick="toggleCb(this)"><div class="plan-cb-dot"></div>🧪 Sciences</div>
+        <div class="plan-cb" onclick="toggleCb(this)"><div class="plan-cb-dot"></div>🇬🇧 Anglais</div>
+        <div class="plan-cb" onclick="toggleCb(this)"><div class="plan-cb-dot"></div>🔬 SVT</div>
+      </div>
+      <button class="plan-gen-btn" id="plan-btn" onclick="generatePlanning()">🗓️ Générer mon planning personnalisé avec l'IA</button>
+    </div>
+    <div id="plan-result" class="plan-result hidden">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
+        <div><div style="font-family:var(--fh);font-size:1.1rem;font-weight:800;color:var(--txt)">📅 Ton planning de la semaine</div><div style="font-size:.8rem;color:var(--muted);margin-top:3px;font-weight:600">Généré par l'IA · Adapté à tes lacunes</div></div>
+        <button class="btn btn-ghost btn-sm" onclick="resetPlanning()">↺ Regénérer</button>
+      </div>
+      <div class="week-grid" id="week-grid"></div>
+      <div class="plan-insight" id="plan-insight"></div>
+      <div style="display:flex;gap:11px;flex-wrap:wrap">
+        <button class="btn btn-grn btn-md" onclick="go('exercises')">📚 Commencer les révisions</button>
+        <button class="btn btn-blu btn-md" onclick="go('duel')">⚔️ Tester avec un Duel</button>
+        <button class="btn btn-ghost btn-md" onclick="resetPlanning()">🔄 Nouveau planning</button>
+      </div>
+    </div>
+  </div></div>
+</div>
+
+<!-- ════════════════════ CHARTS ════════════════════ -->
+<div class="page" id="page-charts">
+  <div class="wrap" style="padding-top:36px;padding-bottom:60px">
+    <div style="margin-bottom:28px">
+      <div style="font-family:var(--fh);font-size:1.8rem;font-weight:800;letter-spacing:-.5px;margin-bottom:5px;color:var(--txt)">📊 Mes statistiques</div>
+      <div style="color:var(--muted);font-size:.9rem;font-weight:600">Visualise ta progression sur les 30 derniers jours</div>
+    </div>
+    <div style="background:linear-gradient(135deg,var(--grn-l),#d1fae5);border:1.5px solid var(--grn-m);border-radius:var(--r);padding:22px;margin-bottom:20px;display:flex;align-items:center;gap:20px;box-shadow:var(--sh)">
+      <div style="font-size:3rem" id="ch-lv-ico">🥉</div>
+      <div style="flex:1">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px">
+          <span style="font-family:var(--fh);font-size:1.2rem;font-weight:800;color:var(--txt)" id="ch-lv-name">Bronze</span>
+          <span class="badge lv-bronze" id="ch-lv-badge">NIVEAU 2</span>
+        </div>
+        <div class="xp-bar-wrap"><div class="xp-bar-fill bronze" id="ch-xp-fill" style="width:45%"></div></div>
+        <div style="display:flex;justify-content:space-between;font-size:.73rem;color:var(--muted);font-weight:600">
+          <span id="ch-xp-cur">450 XP</span><span id="ch-xp-next">1 000 XP pour Or</span>
+        </div>
+      </div>
+      <div style="text-align:center">
+        <div style="font-family:var(--fh);font-size:2rem;font-weight:800;color:var(--grn)" id="ch-total-xp">450</div>
+        <div style="font-size:.72rem;color:var(--muted);font-weight:600">XP total</div>
+      </div>
+    </div>
+    <div class="charts-grid">
+      <div class="chart-card"><div class="chart-title">XP gagnés <span class="chart-sub">7 derniers jours</span></div><div class="mini-chart" id="chart-xp"></div></div>
+      <div class="chart-card"><div class="chart-title">Exercices par matière <span class="chart-sub">ce mois</span></div><div class="mini-chart" id="chart-subjects"></div></div>
+      <div class="chart-card"><div class="chart-title">Taux de réussite <span class="chart-sub">7 derniers jours</span></div><div class="mini-chart" id="chart-success"></div></div>
+      <div class="chart-card">
+        <div class="chart-title">Duels <span class="chart-sub">ce mois</span></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:8px">
+          <div style="text-align:center;background:var(--grn-l);border:1.5px solid var(--grn-m);border-radius:10px;padding:16px"><div style="font-family:var(--fh);font-size:2rem;font-weight:800;color:var(--grn)" id="ch-duel-win">8</div><div style="font-size:.72rem;color:var(--muted);margin-top:3px;font-weight:600">Victoires 🏆</div></div>
+          <div style="text-align:center;background:var(--red-l);border:1.5px solid #fca5a5;border-radius:10px;padding:16px"><div style="font-family:var(--fh);font-size:2rem;font-weight:800;color:var(--red)" id="ch-duel-loss">4</div><div style="font-size:.72rem;color:var(--muted);margin-top:3px;font-weight:600">Défaites 💪</div></div>
+        </div>
+        <div style="margin-top:12px;background:var(--blu-l);border:1.5px solid #93c5fd;border-radius:10px;padding:12px;text-align:center"><div style="font-size:.78rem;color:var(--muted);margin-bottom:4px;font-weight:600">Taux de victoire</div><div style="font-family:var(--fh);font-size:1.5rem;font-weight:800;color:var(--blu)" id="ch-win-rate">67%</div></div>
+      </div>
+    </div>
+    <div class="card" style="margin-bottom:20px">
+      <div style="font-family:var(--fh);font-size:.97rem;font-weight:700;margin-bottom:16px;color:var(--txt)">Maîtrise par matière</div>
+      <div id="ch-mastery"></div>
+    </div>
+    <div class="card">
+      <div style="font-family:var(--fh);font-size:.97rem;font-weight:700;margin-bottom:14px;color:var(--txt)">🏆 Parcours de niveaux</div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center" id="ch-levels"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════ DASHBOARD ════════════════════ -->
+<div class="page" id="page-dashboard">
+  <div class="wrap"><div class="dash-layout">
+    <div class="dash-main">
+      <div><div class="dash-welcome">Bonjour, <span>Lucas</span> 👋</div><div style="color:var(--muted);font-size:.87rem;margin-top:4px;font-weight:600">Vendredi 20 mars · Série de 7 jours 🔥</div></div>
+      <div class="stats-row">
+        <div class="stat-card"><div class="sc-v" style="color:var(--grn)">2 840</div><div class="sc-l">XP total</div><div class="sc-ch up">↑ +120 aujourd'hui</div></div>
+        <div class="stat-card"><div class="sc-v" style="color:var(--blu)">94</div><div class="sc-l">Exercices faits</div><div class="sc-ch up">↑ +5 cette semaine</div></div>
+        <div class="stat-card"><div class="sc-v" style="color:var(--pur)">12</div><div class="sc-l">Duels joués</div><div class="sc-ch up">↑ 8 victoires</div></div>
+        <div class="stat-card"><div class="sc-v" style="color:var(--red)">78%</div><div class="sc-l">Réussite</div><div class="sc-ch dn">↓ -2% ce mois</div></div>
+      </div>
+      <div class="card card-lg">
+        <div style="font-family:var(--fh);font-size:.97rem;font-weight:700;margin-bottom:16px;display:flex;justify-content:space-between;align-items:center;color:var(--txt)">Progression par matière<span style="font-size:.73rem;color:var(--muted);font-family:var(--fb);font-weight:500">30 jours</span></div>
+        <div class="sp-row"><div class="sp-ico">➕</div><div class="sp-info"><div class="sp-top"><span class="sp-name">Mathématiques</span><span class="sp-pct">82%</span></div><div class="sp-bar"><div class="sp-fill" style="width:82%"></div></div></div></div>
+        <div class="sp-row"><div class="sp-ico">📝</div><div class="sp-info"><div class="sp-top"><span class="sp-name">Français</span><span class="sp-pct">74%</span></div><div class="sp-bar"><div class="sp-fill" style="width:74%;background:linear-gradient(90deg,#c4b5fd,var(--pur))"></div></div></div></div>
+        <div class="sp-row"><div class="sp-ico">🧪</div><div class="sp-info"><div class="sp-top"><span class="sp-name">Sciences</span><span class="sp-pct">61%</span></div><div class="sp-bar"><div class="sp-fill" style="width:61%;background:linear-gradient(90deg,#93c5fd,var(--blu))"></div></div></div></div>
+        <div class="sp-row"><div class="sp-ico">🌍</div><div class="sp-info"><div class="sp-top"><span class="sp-name">Histoire-Géo</span><span class="sp-pct">88%</span></div><div class="sp-bar"><div class="sp-fill" style="width:88%;background:linear-gradient(90deg,#fcd34d,var(--ylw))"></div></div></div></div>
+        <div class="sp-row"><div class="sp-ico">🇬🇧</div><div class="sp-info"><div class="sp-top"><span class="sp-name">Anglais</span><span class="sp-pct">55%</span></div><div class="sp-bar"><div class="sp-fill" style="width:55%;background:linear-gradient(90deg,#fca5a5,var(--red))"></div></div></div></div>
+      </div>
+      <div class="card card-lg">
+        <div style="font-family:var(--fh);font-size:.97rem;font-weight:700;margin-bottom:14px;color:var(--txt)">Activité récente</div>
+        <div class="act-item"><div class="act-ico">⚔️</div><div class="act-info"><div class="act-t">Duel Maths CM2 — Victoire vs Emma</div><div class="act-s">Il y a 2h · 5/5 correct</div></div><div class="act-pts">+80 XP</div></div>
+        <div class="act-item"><div class="act-ico">🤖</div><div class="act-info"><div class="act-t">Exercices IA — Fractions 5ème</div><div class="act-s">Hier · 8/10 correct</div></div><div class="act-pts">+50 XP</div></div>
+        <div class="act-item"><div class="act-ico">📝</div><div class="act-info"><div class="act-t">Accord du participe passé</div><div class="act-s">Avant-hier · Mme Dupont</div></div><div class="act-pts">+30 XP</div></div>
+        <div class="act-item"><div class="act-ico">🗓️</div><div class="act-info"><div class="act-t">Planning IA généré — Anglais prioritaire</div><div class="act-s">Il y a 3 jours</div></div><div class="act-pts">—</div></div>
+      </div>
+      <div style="display:flex;gap:11px;flex-wrap:wrap">
+        <button class="btn btn-grn btn-md" onclick="go('exercises')">🎯 S'entraîner</button>
+        <button class="btn btn-blu btn-md" onclick="go('duel')">⚔️ Duel</button>
+        <button class="btn btn-pur btn-md" onclick="go('planning')">🗓️ Planning IA</button>
+        <button class="btn btn-ghost btn-md" onclick="go('aigen')">🤖 Générer</button>
+      </div>
+    </div>
+    <div class="dash-side">
+      <div class="card" style="padding:16px">
+        <div style="font-family:var(--fh);font-size:.9rem;font-weight:700;margin-bottom:13px;color:var(--txt)">🏆 Classement semaine</div>
+        <div class="lb-item"><div class="lb-r g">1</div><span class="lb-n">Emma</span><span class="lb-x">3 420</span></div>
+        <div class="lb-item"><div class="lb-r s">2</div><span class="lb-n">Théo</span><span class="lb-x">3 180</span></div>
+        <div class="lb-item lb-me"><div class="lb-r g">3</div><span class="lb-n">Toi 🎯</span><span class="lb-x">2 840</span></div>
+        <div class="lb-item"><div class="lb-r">4</div><span class="lb-n">Sofia</span><span class="lb-x">2 510</span></div>
+        <div class="lb-item"><div class="lb-r">5</div><span class="lb-n">Noah</span><span class="lb-x">2 200</span></div>
+      </div>
+      <div class="card" style="padding:16px">
+        <div style="font-family:var(--fh);font-size:.9rem;font-weight:700;margin-bottom:13px;color:var(--txt)">🎖️ Badges</div>
+        <div style="display:flex;flex-wrap:wrap;gap:7px">
+          <span style="font-size:1.5rem" title="7j streak">🔥</span>
+          <span style="font-size:1.5rem" title="1er duel">⚔️</span>
+          <span style="font-size:1.5rem" title="50 exercices">📚</span>
+          <span style="font-size:1.5rem" title="100% maths">➕</span>
+          <span style="font-size:1.5rem" title="IA x10">🤖</span>
+          <span style="font-size:1.5rem" title="Planning généré">🗓️</span>
+          <span style="font-size:1.5rem;opacity:.25">🔒</span>
+          <span style="font-size:1.5rem;opacity:.25">🔒</span>
+        </div>
+      </div>
+      <div style="background:var(--blu-l);border:1.5px solid #93c5fd;border-radius:var(--r);padding:16px;cursor:pointer;text-align:center" onclick="go('duel')">
+        <div style="font-size:1.8rem;margin-bottom:7px">⚔️</div>
+        <div style="font-family:var(--fh);font-weight:700;color:var(--blu);margin-bottom:5px">Prochain Duel</div>
+        <div style="font-size:.77rem;color:var(--txt2);margin-bottom:12px;font-weight:600">Emma t'a défié ! Réponds avant demain</div>
+        <button class="btn btn-blu btn-sm" style="width:100%">Accepter le défi</button>
+      </div>
+    </div>
+  </div></div>
+</div>
+
+<!-- ════════════════════ PROF ════════════════════ -->
+<div class="page" id="page-prof">
+  <div class="wrap"><div class="prof-page-wrap">
+    <div class="prof-head">
+      <div class="prof-page-title">Espace Enseignant</div>
+      <div class="prof-tabs">
+        <div class="ptab on" onclick="switchPTab('create',this)">➕ Créer</div>
+        <div class="ptab" onclick="switchPTab('published',this)">📋 Publiés</div>
+        <div class="ptab" onclick="switchPTab('stats',this)">📊 Stats</div>
+      </div>
+    </div>
+    <div id="ptab-create">
+      <div class="create-form">
+        <div class="form-sec-t">📝 Informations générales</div>
+        <div style="margin-bottom:13px"><div class="flbl">Titre *</div><input class="inp" placeholder="Ex : Les fractions — Addition et soustraction"/></div>
+        <div class="form-g3">
+          <div><div class="flbl">Matière *</div><select class="inp"><option>Mathématiques</option><option>Français</option><option>Sciences</option><option>Histoire-Géo</option><option>Anglais</option></select></div>
+          <div><div class="flbl">Niveau *</div><select class="inp"><option>CE1</option><option>CM2</option><option>5ème</option><option>3ème</option><option>Lycée</option></select></div>
+          <div><div class="flbl">Difficulté</div><select class="inp"><option>Facile</option><option selected>Moyen</option><option>Difficile</option></select></div>
+        </div>
+        <div style="margin-bottom:14px"><div class="flbl">Énoncé *</div><textarea class="inp ta" placeholder="Écris ta question..."></textarea></div>
+        <div style="margin-bottom:14px">
+          <div class="flbl" style="margin-bottom:9px">Réponses (coche la bonne)</div>
+          <div class="ans-row"><input class="ans-inp" placeholder="Réponse A"/><button class="ans-ok yes" onclick="toggleAns(this)">✓ Correcte</button></div>
+          <div class="ans-row"><input class="ans-inp" placeholder="Réponse B"/><button class="ans-ok" onclick="toggleAns(this)">Correcte ?</button></div>
+          <div class="ans-row"><input class="ans-inp" placeholder="Réponse C"/><button class="ans-ok" onclick="toggleAns(this)">Correcte ?</button></div>
+          <div class="ans-row"><input class="ans-inp" placeholder="Réponse D"/><button class="ans-ok" onclick="toggleAns(this)">Correcte ?</button></div>
+        </div>
+        <div style="margin-bottom:14px"><div class="flbl">Explication (optionnel)</div><textarea class="inp ta" placeholder="Pourquoi c'est la bonne réponse..."></textarea></div>
+        <div class="ai-gen-bar" onclick="go('aigen')">🤖 Ou générer des exercices entiers avec l'IA →</div>
+        <div style="display:flex;gap:11px">
+          <button class="pub-btn" style="flex:1" onclick="alert('✅ Exercice publié avec succès !')">🚀 Publier</button>
+          <button class="btn btn-ghost btn-md">💾 Brouillon</button>
+        </div>
+      </div>
+    </div>
+    <div id="ptab-published" class="hidden">
+      <div class="pub-item"><div style="font-size:1.1rem">➕</div><div style="flex:1"><div class="pub-t">Multiplication — Tables de 7 et 8</div><div class="pub-m">Maths · CM2 · Facile · Publié il y a 3j</div></div><div style="text-align:right"><div class="pub-vn">124</div><div class="pub-vl">vues</div></div><span class="badge b-grn" style="margin-left:12px">Publié</span></div>
+      <div class="pub-item"><div style="font-size:1.1rem">📝</div><div style="flex:1"><div class="pub-t">Accord du participe passé</div><div class="pub-m">Français · 4ème · Moyen · Publié il y a 1 sem</div></div><div style="text-align:right"><div class="pub-vn">89</div><div class="pub-vl">vues</div></div><span class="badge b-blu" style="margin-left:12px">Publié</span></div>
+      <div class="pub-item"><div style="font-size:1.1rem">🌍</div><div style="flex:1"><div class="pub-t">Révolution française — Dates clés</div><div class="pub-m">Histoire · 4ème · Difficile · Publié il y a 2 sem</div></div><div style="text-align:right"><div class="pub-vn">67</div><div class="pub-vl">vues</div></div><span class="badge b-blu" style="margin-left:12px">Publié</span></div>
+      <div class="pub-item"><div style="font-size:1.1rem">🧪</div><div style="flex:1"><div class="pub-t">Le cycle de l'eau</div><div class="pub-m">Sciences · CM1 · Facile · Brouillon</div></div><div style="text-align:right"><div class="pub-vn">—</div><div class="pub-vl">vues</div></div><span class="badge b-red" style="margin-left:12px">Brouillon</span></div>
+    </div>
+    <div id="ptab-stats" class="hidden">
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:22px">
+        <div class="card"><div class="sc-v" style="color:var(--grn)">280</div><div class="sc-l">Total vues</div></div>
+        <div class="card"><div class="sc-v" style="color:var(--blu)">4</div><div class="sc-l">Exercices publiés</div></div>
+        <div class="card"><div class="sc-v" style="color:var(--pur)">74%</div><div class="sc-l">Réussite moyenne</div></div>
+      </div>
+      <div class="card card-lg">
+        <div style="font-family:var(--fh);font-size:.97rem;font-weight:700;margin-bottom:14px;color:var(--txt)">Performance par exercice</div>
+        <div class="sp-row"><div class="sp-ico">➕</div><div class="sp-info"><div class="sp-top"><span class="sp-name">Multiplication Tables</span><span class="sp-pct">88%</span></div><div class="sp-bar"><div class="sp-fill" style="width:88%"></div></div></div></div>
+        <div class="sp-row"><div class="sp-ico">📝</div><div class="sp-info"><div class="sp-top"><span class="sp-name">Participe passé</span><span class="sp-pct">62%</span></div><div class="sp-bar"><div class="sp-fill" style="width:62%;background:linear-gradient(90deg,#c4b5fd,var(--pur))"></div></div></div></div>
+        <div class="sp-row"><div class="sp-ico">🌍</div><div class="sp-info"><div class="sp-top"><span class="sp-name">Révolution française</span><span class="sp-pct">71%</span></div><div class="sp-bar"><div class="sp-fill" style="width:71%;background:linear-gradient(90deg,#93c5fd,var(--blu))"></div></div></div></div>
+      </div>
+    </div>
+  </div></div>
+</div>
+
